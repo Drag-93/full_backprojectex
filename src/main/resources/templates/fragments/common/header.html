@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div class="header" th:fragment="headerFragment">
+    <div class="nav">
+        <h1 class="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/imgages/logo}" alt="HOME">
+            </a>
+        </h1>
+        <div class="gnb">
+            <ul>
+                <li>
+                    <a th:href="@{/shop/index}">HOME</a>
+                </li>
+                <li>
+                    <a th:href="@{/member/join}">회원가입</a>
+                </li>
+                <li>
+                    <a th:href="@{/member/login}">로그인</a>
+                </li>
+                <li>
+                    <a th:href="@{/admin}">관리자</a>
+                </li>
+                <li>
+                    <a th:href="@{/payment}">결제목록</a>
+                </li>
+                <li>
+                    <a th:href="@{/cart}">장바구니</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

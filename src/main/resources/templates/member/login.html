@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+<div th:replace="~{fragments/common/header::headerFragment}"></div>
+<div class="login">
+    <div class="login-con">
+        <form th:action="@{/member/login}" method="POST">
+            <ul>
+                <li>
+                    <input type="email" name="userEmail" id="userEmail" placeholder="이메일">
+                </li>
+                <li>
+                    <input type="password" name="userPw" id="userPw" placeholder="비밀번호">
+                </li>
+                <th:block th:if="${error}">
+                    <li style="color: #ff0000; font-size: 12px;" th:text="${exception}"></li>
+                </th:block>
+                <th:block th:if="${errorMessage}">
+                    <li style="color: #ff0000; font-size: 12px;" th:text="${errorMessage}"></li>
+                </th:block>
+                <li>
+                    <input type="submit" class="li-last" value="로그인">
+                    <a th:href="@{/member/join}" class="li-last">회원가입</a>
+                    <input type="reset" class="li-last" value="초기화">
+                </li>
+                <li class="sns">
+                    <a th:href="@{/oauth2/authorization/google}"><img th:src="@{/images/google.png}" alt="google"></a>
+                    <a th:href="@{/oauth2/authorization/kakao}"><img th:src="@{/images/kakao.png}" alt="kakao"></a>
+                    <a th:href="@{/oauth2/authorization/naver}"><img th:src="@{/images/naver.png}" alt="naver"></a>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+<div th:replace="~{fragments/common/footer::footerFragment}"></div>
+</body>
+</html>
