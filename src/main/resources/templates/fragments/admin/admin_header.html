@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div class="admin_header" th:fragment="adminHeaderFragment">
+    <a href="/">HOME</a>
+    <a th:href="@{/shop/index}">SHOP</a>
+    <th:block sec:authorize="isAuthenticated()"> <!--로그인 후, 비로그인 일 때 X-->
+        <th:block sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{/admin/index}">ADMIN</a>
+        </th:block>
+        <a th:onclick="'adminMemberDetailFn(event,'+${#authentication.principal.memberEntity.id}+')'">
+            <span th:text="${#authentication.principal.memberEntity.userName !=null ? #authentication.principal.memberEntity.userName.toUpperCase():''}"></span>
+        </a>
+        <a th:href="@{/member/logout}">로그아웃</a>
+    </th:block>
+    <div class="admin_header_modal">
+        <div class="admin_header_modal-con">
+            <span class="close" onclick="closeFn()">X</span>
+            <ul>
+                <li><span>ID</span><span class="userId"></span></li>
+                <li><span>이메일</span><span class="userEmail"></span></li>
+                <li><span>비밀번호</span><span class="userPw" type="password"></span></li>
+                <li><span>이름</span><span class="userName"></span></li>
+                <li><span>ROLE</span><span class="role"></span></li>
+                <li><span>가입일</span><span class="createTime"></span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/admin_header.js}" defer></script>
+</html>

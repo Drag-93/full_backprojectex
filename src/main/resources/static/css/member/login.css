@@ -1,0 +1,211 @@
+@charset "UTF-8";
+
+@import url("../common/reset.css");
+@import url("../common/header.css");
+@import url("../common/footer.css");
+
+body{
+    background:#f4f6f9;
+    font-family:Arial,sans-serif;
+}
+
+.login{
+    width:100%;
+    min-height:calc(100vh - 160px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:50px 20px;
+}
+
+.login .login-con{
+    width:100%;
+    max-width:500px;
+
+    background:#fff;
+    padding:50px 40px;
+
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.login .login-con form ul{
+    width:94%;
+    margin:0 auto;
+
+    list-style:none;
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.login .login-con form > ul:first-child::before{
+    content:"로그인";
+
+    display:block;
+    text-align:center;
+
+    font-size:32px;
+    font-weight:700;
+
+    margin-bottom:20px;
+
+    color:#2c3e50;
+}
+
+.login input[type="email"],
+.login input[type="password"]{
+    width:100%;
+    height:55px;
+
+    padding:0 15px;
+
+    border:1px solid #dcdfe6;
+    border-radius:10px;
+
+    font-size:15px;
+    outline:none;
+
+    transition:.2s;
+}
+
+.login input[type="email"]:focus,
+.login input[type="password"]:focus{
+    border-color:#3498db;
+    box-shadow:0 0 0 3px rgba(52,152,219,.15);
+}
+
+.login form ul li:last-of-type{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.login .li-last{
+    flex:1;
+    height:50px;
+
+    border:none;
+    border-radius:10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    font-size:15px;
+    font-weight:600;
+
+    transition:.2s;
+
+    text-decoration:none;
+}
+
+.login input[type="submit"].li-last{
+    background:#3498db;
+    color:#fff;
+}
+
+.login input[type="submit"].li-last:hover{
+    background:#2980b9;
+}
+
+.login a.li-last{
+    background:#2c3e50;
+    color:#fff;
+}
+
+.login a.li-last:hover{
+    background:#1f2937;
+}
+
+.login input[type="reset"].li-last{
+    background:#ecf0f1;
+    color:#333;
+}
+
+.login input[type="reset"].li-last:hover{
+    background:#d5dbdb;
+}
+
+/* SNS 로그인 */
+
+.login .sns{
+    width:94%;
+    margin:20px auto 0;
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.login .sns li{
+    width:100%;
+}
+
+.login .sns li a{
+    width:100%;
+    height:52px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    border-radius:10px;
+
+    font-size:15px;
+    font-weight:600;
+
+    transition:.2s;
+}
+
+/* Google */
+.login .sns .google{
+    background:#fff;
+    border:1px solid #ddd;
+    color:#444;
+}
+
+/* Kakao */
+.login .sns .kakao{
+    background:#FEE500;
+    color:#191919;
+}
+
+/* Naver */
+.login .sns .naver{
+    background:#03C75A;
+    color:#fff;
+}
+
+/* 아이콘 */
+.login .sns li a img{
+    width:24px;
+    height:24px;
+    object-fit:contain;
+}
+
+.login .sns li a:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 12px rgba(0,0,0,.12);
+}
+@media(max-width:600px){
+
+    .login .login-con{
+        padding:35px 25px;
+    }
+
+    .login form ul li:last-of-type{
+        flex-direction:column;
+    }
+
+    .login .sns{
+        gap:12px;
+    }
+
+}

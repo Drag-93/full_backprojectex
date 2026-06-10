@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+@import "../common/reset.css";
+@import "../common/header.css";
+@import "../common/footer.css";
+
+/* 회원가입 페이지 전용 */
+
+body{
+    background:#f4f6f9;
+    font-family:Arial,sans-serif;
+}
+
+.join{
+    width:100%;
+    min-height:calc(100vh - 160px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:50px 20px;
+}
+
+.join .join-con{
+    width:100%;
+    max-width:500px;
+
+    background:#fff;
+    padding:50px 40px;
+
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.join .join-con form ul{
+    list-style:none;
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.join .join-con form ul::before{
+    content:"회원가입";
+
+    display:block;
+
+    text-align:center;
+
+    font-size:32px;
+    font-weight:700;
+
+    margin-bottom:20px;
+
+    color:#2c3e50;
+}
+
+.join input[type="email"],
+.join input[type="password"],
+.join input[type="text"]{
+    width:94%;
+    height:55px;
+
+    padding:0 15px;
+
+    border:1px solid #dcdfe6;
+    border-radius:10px;
+
+    font-size:15px;
+    outline:none;
+
+    transition:.2s;
+}
+
+.join input[type="email"]:focus,
+.join input[type="password"]:focus,
+.join input[type="text"]:focus{
+    border-color:#3498db;
+    box-shadow:0 0 0 3px rgba(52,152,219,.15);
+}
+
+.join .error{
+    font-size:13px;
+    color:#e74c3c;
+
+    margin-top:-8px;
+    margin-left:5px;
+}
+
+.join form ul li:last-child{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+/* 버튼 공통 */
+
+.join .li-last{
+    flex:1;
+
+    height:50px;
+
+    border:none;
+    border-radius:10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    font-size:15px;
+    font-weight:600;
+
+    transition:.2s;
+
+    text-decoration:none;
+}
+
+/* 회원가입 */
+
+.join input[type="submit"].li-last{
+    background:#3498db;
+    color:#fff;
+}
+
+.join input[type="submit"].li-last:hover{
+    background:#2980b9;
+}
+
+/* 로그인 */
+
+.join a.li-last{
+    background:#2c3e50;
+    color:#fff;
+}
+
+.join a.li-last:hover{
+    background:#1f2937;
+}
+
+/* 초기화 */
+
+.join input[type="reset"].li-last{
+    background:#ecf0f1;
+    color:#333;
+}
+
+.join input[type="reset"].li-last:hover{
+    background:#d5dbdb;
+}
+
+@media(max-width:600px){
+
+    .join .join-con{
+        padding:35px 25px;
+    }
+
+    .join form ul li:last-child{
+        flex-direction:column;
+    }
+
+}

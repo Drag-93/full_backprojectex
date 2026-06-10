@@ -1,6 +1,27 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<div class="footer" th:fragment="footerFragment">
-    저작권&&
+<div class="footer" th:fragment="footerFragment" xmlns:th="http://www.thymeleaf.org">
+    <div class="footer-con">
+        <!-- 왼쪽: 서비스명, 약관 가이드 및 카피라이트 -->
+        <div class="footer-left">
+            <div class="footer-info">
+                <strong>☕ SMART ORDER SYSTEM</strong>
+                <span class="bar">|</span>
+                <a href="#">이용약관</a>
+                <span class="bar">|</span>
+                <a href="#">개인정보처리방침</a>
+                <span class="bar">|</span>
+                <a href="#">고객센터</a>
+            </div>
+            <p class="copyright">© 2026 SMART ORDER Inc. All Rights Reserved. (스마트오더 시스템 가맹점 전용)</p>
+        </div>
+
+        <!-- 오른쪽: 고객센터 빠른 정보 및 상단이동 가이드 -->
+        <div class="footer-right">
+            <div class="cs-info">
+                <span class="cs-title">고객센터 1588-0000</span>
+                <span class="cs-time">오전 09:00 ~ 오후 06:00 (주말/공휴일 휴무)</span>
+            </div>
+            <!-- 클릭 시 상단으로 뷰를 부드럽게 올리는 앵커 링크 -->
+            <a href="#" class="btn-top">TOP ▲</a>
+        </div>
+    </div>
 </div>

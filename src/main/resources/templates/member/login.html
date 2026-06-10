@@ -1,42 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>login</title>
+    <link rel="stylesheet" th:href="@{/css/member/login.css}"/>
 </head>
 <body>
-<div th:replace="~{fragments/common/header::headerFragment}"></div>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
 <div class="login">
     <div class="login-con">
         <form th:action="@{/member/login}" method="POST">
             <ul>
                 <li>
-                    <input type="email" name="userEmail" id="userEmail" placeholder="이메일">
+                    <input type="email" name="userEmail" placeholder="이메일" id="userEmail">
                 </li>
+
                 <li>
-                    <input type="password" name="userPw" id="userPw" placeholder="비밀번호">
+                    <input type="password" name="userPw" placeholder="비밀번호" id="userPw">
                 </li>
                 <th:block th:if="${error}">
-                    <li style="color: #ff0000; font-size: 12px;" th:text="${exception}"></li>
+                    <li style="color:#ff0000; font-size:12px;" th:text="${exception}"></li>
                 </th:block>
                 <th:block th:if="${errorMessage}">
-                    <li style="color: #ff0000; font-size: 12px;" th:text="${errorMessage}"></li>
+                    <li style="color:#ff0000; font-size:12px;" th:text="${errorMessage}"></li>
                 </th:block>
                 <li>
                     <input type="submit" class="li-last" value="로그인">
                     <a th:href="@{/member/join}" class="li-last">회원가입</a>
-                    <input type="reset" class="li-last" value="초기화">
-                </li>
-                <li class="sns">
-                    <a th:href="@{/oauth2/authorization/google}"><img th:src="@{/images/google.png}" alt="google"></a>
-                    <a th:href="@{/oauth2/authorization/kakao}"><img th:src="@{/images/kakao.png}" alt="kakao"></a>
-                    <a th:href="@{/oauth2/authorization/naver}"><img th:src="@{/images/naver.png}" alt="naver"></a>
+                    <input type="reset" value="초기화" class="li-last">
                 </li>
             </ul>
         </form>
+            <ul class="sns">
+                    <li>
+                        <a class="google" th:href="@{/oauth2/authorization/google}">
+                            <img th:src="@{/images/google.png}" alt="google">
+                            <span>Google 로그인</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="kakao" th:href="@{/oauth2/authorization/kakao}">
+                            <img th:src="@{/images/kakao.png}" alt="kakao">
+                            <span>Kakao 로그인</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="naver" th:href="@{/oauth2/authorization/naver}">
+                            <img th:src="@{/images/naver.png}" alt="naver">
+                            <span>Naver 로그인</span>
+                        </a>
+                    </li>
+                </ul>
+
     </div>
 </div>
-<div th:replace="~{fragments/common/footer::footerFragment}"></div>
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+
 </body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+</head>
+<body>
+<div class="admin">
+    <div class="admin-con">
+        <div th:replace="~{fragments/admin/admin_left :: adminLeftFragment}"></div>
+        <div class="right">
+            <div th:replace="~{fragments/admin/admin_header :: adminHeaderFragment"></div>
+            <div class="admin-list">
+                <th:block th:if="${key=='member'}">
+                    <th:block th:replace="~{fragments/admon/admin_member :: adminMemberFragment}"></th:block>
+                </th:block>
+                <th:block th:if="${key=='itemInsert'}">
+                    <th:block th:replace="~{fragments/admon/admin_itemInsert :: adminItemInsertFragment}"></th:block>
+                </th:block>
+                <th:block th:if="${key=='itemList'}">
+                    <th:block th:replace="~{fragments/admon/admin_itemList :: adminItemListFragment}"></th:block>
+                </th:block>
+                <th:block th:if="${key=='itemDetail'}">
+                    <th:block th:replace="~{fragments/admon/admin_itemDetail :: adminItemDetailFragment}"></th:block>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

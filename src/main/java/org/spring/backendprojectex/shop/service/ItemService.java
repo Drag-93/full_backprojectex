@@ -11,7 +11,7 @@ import java.util.List;
 public interface ItemService {
     List<ItemDto> itemListFn();
 
-//    ItemDto oneItemFn(Long id);
+    ItemDto oneItemFn(Long id);
 
     Page<ItemDto> pagingSearchItemList(Pageable pageable, String subject, String search);
 

@@ -1,37 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>join</title>
+    <link rel="stylesheet" th:href="@{/css/member/join.css}"/>
 </head>
 <body>
-<div th:replace="~{fragments/common/header::headerFragment}"></div>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
 <div class="join">
     <div class="join-con">
         <form th:action="@{/member/join}" method="POST" th:object="${memberDto}">
             <ul>
                 <li>
-                    <input type="email" th:field="*{userEmail}" id="userEmail" placeholder="이메일">
+                    <input type="email" th:field="*{userEmail}" placeholder="이메일">
                 </li>
                 <li th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}" class="error"></li>
+
                 <li>
-                    <input type="password" th:field="*{userPw}" id="userPw" placeholder="비밀번호">
+                    <input type="password" th:field="*{userPw}" placeholder="비밀번호">
                 </li>
                 <li th:if="${#fields.hasErrors('userPw')}" th:errors="*{userPw}" class="error"></li>
+
                 <li>
-                    <input type="text" th:field="*{userName}" id="userName" placeholder="이름">
+                    <input type="text" th:field="*{userName}" placeholder="이름">
                 </li>
                 <li th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="error"></li>
+
                 <li>
                     <input type="submit" class="li-last" value="회원가입">
                     <a th:href="@{/member/login}" class="li-last">로그인</a>
-                    <input type="reset" class="li-last" value="초기화">
+                    <input type="reset" value="초기화" class="li-last">
                 </li>
             </ul>
         </form>
     </div>
 </div>
-<div th:replace="~{fragments/common/footer::footerFragment}"></div>
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+
 </body>
 </html>

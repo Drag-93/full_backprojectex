@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>상품상세페이지</title>
+    <script th:src="@{/js/detail.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/shop/itemDetail.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+<div class="detail">
+    <div class="detail-con">
+        <div class="left">
+            <div class="detail-image">
+                <th:block th:if="${item.attachFile==1}">
+                    <img th:src="@{|/upload/item/${item.newFileName}|}" alt="이미지대체문구">
+                </th:block>
+                <th:block th:unless="${item.attachFile==1}">
+                    <img src="https://placehold.co/400x250/cccccc/ffffff?text=ITEM" alt="상품 이미지">
+                </th:block>
+            </div>
+        </div>
+       <div class="right">
+           <h1 th:text="${item.itemTitle}"></h1>
+           <form th:action="@{/cart/insert/addCart0}" method="post">
+               <ul>
+                   <li>
+                       <label for="id">ID</label>
+                       <input type="text" name="id" id="id" th:value="${item.id}">
+                   </li>
+                   <li>
+                       <label for="itemTitle">itemTitle</label>
+                       <input type="text" name="itemTitle" id="itemTitle" th:value="${item.itemTitle}">
+                   </li>
+                   <li>
+                       <label for="itemDetail">itemDetail</label>
+                       <input type="text" name="itemDetail" id="itemDetail" th:value="${item.itemDetail}">
+                   </li>
+                   <li>
+                       <label for="itemPrice">itemPrice</label>
+                       <input type="text" name="itemPrice" id="itemPrice" th:value="${item.itemPrice}">
+                   </li>
+                   <li>
+                       <label for="memberId">memberId</label>
+                       <th:block sec:authorize="isAuthenticated()"><!-- 로그인 후 , 비로그인 일 때 X-->
+                           <input type="text" name="memberId" id="memberId"
+                                  th:value="${#authentication.principal.memberEntity.id}" readonly>
+                       </th:block>
+
+                   </li>
+                   <li>
+                       <label for="itemSize">상품개수</label>
+                       <input type="number" name="itemSize" id="itemSize" min="1" th:value="${item.itemSize}">
+                   </li>
+                   <li>
+                       <label>합계금액: </label>
+                       <span id="total"></span>
+                   </li>
+                   <li th:text="${item.createTime}"></li>
+                   <li th:text="${item.updateTime}"></li>
+                   <li style="display:flex;justify-content:center;gap:1vw">
+                       <!-- 관리자 페이지 -->
+                       <!--              <input type="submit" value="상품수정">-->
+                       <!--              <button type="button" onclick="deleteFn(event)">삭제</button>-->
+                       <!-- 관리자 페이지 -->
+                       <th:block sec:authorize="isAuthenticated()"><!-- 로그인 후 , 비로그인 일 때 X-->
+                       <input type="submit" value="장바구니0">
+                       <button type="button" onclick="cartFn(event)">장바구니1(JS)</button>
+                       <a th:href="@{/cart/insert/memberId/{memberId}/id/{id}(memberId=${item.memberId},id=${item.id})}" style="text-align:center">장바구니2</a>
+                       </th:block>
+                       <th:block sec:authorize="isAnonymous()"> <!-- 로그인 후 보이지 않게 -->
+                           <span style="flex:3; color:#f00;font-weight:bold;">로그인후 장바구니를 실행 할수 있습니다!!</span>
+                           <a th:href="@{/member/join}"  style="text-align:center">회원가입</a>
+                           <a th:href="@{/member/login}"  style="text-align:center">로그인</a>
+                       </th:block>
+                   </li>
+               </ul>
+           </form>
+
+       </div>
+    </div>
+</div>
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+</html>

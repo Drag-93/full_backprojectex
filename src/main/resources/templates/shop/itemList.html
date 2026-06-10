@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품리스트</title>
+    <link rel="stylesheet" th:href="@{/css/shop/itemList.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+<div class="itemList">
+
+    <div class="itemList-con">
+        <div class="top">
+            <div class="search">
+                <h3>상품목록 </h3>
+
+                <form th:action="@{/shop/itemList}">
+                    <select name="subject" id="subject">
+                        <option value="" th:selected="${#strings.isEmpty( param.subject )}">::선택::</option>
+                        <option value="itemTitle" th:selected="${#strings.equals( param.subject, 'itemTitle' )}">상품이름
+                        </option>
+                        <option value="itemDetail" th:selected="${#strings.equals( param.subject, 'itemDetail' )}">상품설명
+                        </option>
+                        <option value="itemPrice" th:selected="${#strings.equals( param.subject, 'itemPrice' )}">상품가격</option>
+                    </select>
+                    <input type="text" name="search" id="search" th:value="${param.search}">
+                    <input type="submit" value="검색"/>
+                </form>
+            </div>
+            <div class="item-grid">
+                <div class="item-card" th:each="item : ${itemList}">
+                    <div class="item-image">
+                        <th:block th:if="${item.attachFile==1}">
+                            <img th:src="@{|/upload/item/${item.newFileName}|}" alt="이미지대체문구">
+                        </th:block>
+                        <th:block th:unless="${item.attachFile==1}">
+                            <img src="https://placehold.co/400x250/cccccc/ffffff?text=ITEM" alt="상품 이미지">
+                        </th:block>
+                    </div>
+                    <div class="item-info">
+                        <div class="title" th:text="${item.itemTitle}"></div>
+                        <div class="price" th:text="${item.itemPrice} + '원'"></div>
+                        <a th:href="@{/shop/detail/{id}(id=${item.id})}" class="detail-link">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="paging">
+        <ul>
+            <!-- 처음-->
+            <li>
+                <span th:if="${newPage==0}" class="span0">START</span>
+                <span th:unless="${newPage==0}">
+                <a th:href="@{/shop/itemList(page=0, subject=${param.subject}, search=${param.search})}" class="span1">처음</a>
+            </span>
+            </li>
+            <!--        이전-->
+            <li>
+                <span th:if="${newPage==0}" class="span0">PRE</span>
+                <span th:unless="${newPage==0}">
+                <a th:href="@{/shop/itemList(page=${newPage - 1}, subject=${param.subject}, search=${param.search})}" class="span1">이전</a>
+            </span>
+            </li>
+            <!--        페이지 번호-->
+            <li th:each="i:${#numbers.sequence(startPage,endPage)}" class="block">
+            <span th:if="${i==newPage + 1}"
+                  th:text="${i}" class="now"></span>
+                <a th:unless="${i==newPage + 1}"
+                   th:href="@{/shop/itemList(page=${i - 1}, subject=${param.subject}, search=${param.search})}"
+                   th:text="${i}"></a>
+            </li>
+            <!--        다음-->
+            <li>
+                <span th:if="${newPage + 1 == itemList.totalPages}" class="span0">NEXT</span>
+                <span th:unless="${newPage + 1 == itemList.totalPages}">
+                <a th:href="@{/shop/itemList(page=${newPage + 1}, subject=${param.subject}, search=${param.search})}" class="span1">다음</a>
+            </span>
+            </li>
+            <!--        마지막-->
+            <li>
+                <span th:if="${newPage + 1 == itemList.totalPages}" class="span0">END</span>
+                <span th:unless="${newPage + 1 == itemList.totalPages}">
+                <a th:href="@{/shop/itemList(page=${itemList.totalPages - 1}, subject=${param.subject}, search=${param.search})}" class="span1">마지막</a>
+            </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+</html>

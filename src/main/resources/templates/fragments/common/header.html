@@ -1,34 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <div class="header" th:fragment="headerFragment">
     <div class="nav">
         <h1 class="logo">
-            <a th:href="@{/}">
-                <img th:src="@{/imgages/logo}" alt="HOME">
-            </a>
+            <a th:href="@{/}">☕ SMART ORDER</a>
         </h1>
         <div class="gnb">
             <ul>
-                <li>
-                    <a th:href="@{/shop/index}">HOME</a>
-                </li>
-                <li>
-                    <a th:href="@{/member/join}">회원가입</a>
-                </li>
-                <li>
-                    <a th:href="@{/member/login}">로그인</a>
-                </li>
-                <li>
-                    <a th:href="@{/admin}">관리자</a>
-                </li>
-                <li>
-                    <a th:href="@{/payment}">결제목록</a>
-                </li>
-                <li>
-                    <a th:href="@{/cart}">장바구니</a>
+                <li><a th:href="@{/shop/index}" class="btn-order">SHOP_HOME</a></li>
+                <li><a th:href="@{/cart}">🛒장바구니</a></li>
+                <th:block sec:authorize="hasRole('ADMIN')">
+                    <li> <a th:href="@{/shop/insert}">✨ 상품등록</a> </li>
+                    <li> <a th:href="@{/admin}">🛠️ 관리자페이지</a> </li>
+                </th:block>
+                <th:block sec:authorize="isAnonymous()">
+                    <li><a th:href="@{/member/login}" class="btn-auth">로그인</a></li>
+                    <li><a th:href="@{/member/join}">회원가입</a></li>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                    <li><a th:href="@{/payment}">📋 주문내역</a></li>
+                    <li><a th:href="@{/member/logout}" class="btn-auth">로그아웃</a></li>
+                </th:block>
+
+                <li sec:authorize="isAuthenticated()" class="user-profile-item">
+                    <button type="button" class="user-profile-btn" onclick="openProfileModal()">
+                        👤 <span sec:authentication="principal.name">이름 자리</span>님
+                    </button>
+
+                    <div id="profileModal" class="profile-modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>회원 상세정보</h2>
+                                <button type="button" class="close-btn" onclick="closeProfileModal()">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="info-row">
+                                    <label>이름</label>
+                                    <span sec:authentication="principal.name">홍길동</span>
+                                </div>
+                                <div class="info-row">
+                                    <label>이메일(ID)</label>
+                                    <span sec:authentication="principal.username">example@email.com</span>
+                                </div>
+                                <div class="info-row">
+                                    <label>권한 등급</label>
+                                    <span class="badge" sec:authentication="principal.authorities">ROLE_MEMBER</span>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a th:href="@{/member/detail}" class="btn-edit">내 정보 수정</a>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
+    <script>
+        // 모달창 열기
+        function openProfileModal() {
+            const modal = document.getElementById('profileModal');
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        // 모달창 닫기
+        function closeProfileModal() {
+            const modal = document.getElementById('profileModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // 모달창 바깥 검은 배경 클릭 시 닫히는 기능
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('profileModal');
+            if (event.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
 </div>

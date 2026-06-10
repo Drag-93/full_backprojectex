@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품등록페이지</title>
+    <script th:src="@{/js/itemInsert.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/shop/itemInsert.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+
+<div class="itemInsert">
+    <div class="itemInsert-con">
+        <h1>상품등록</h1>
+        <form th:action="@{/shop/insert}" method="post"  th:object="${itemDto}" enctype="multipart/form-data">
+            <ul>
+                <li>
+                    <input type="text" th:field="*{itemTitle}" id="itemTitle" placeholder="상품명">
+                </li>
+                <li>
+                    <input type="text" name="memberId" th:value="${#authentication != null ? #authentication.principal.memberEntity.id : ''}">
+                </li>
+                <li th:if="${#fields.hasErrors('itemTitle')}" th:errors="*{itemTitle}" class="error"></li>
+                <li>
+                    <input type="text"  th:field="*{itemDetail}" id="itemDetail" placeholder="상품상세">
+                </li>
+                <li th:if="${#fields.hasErrors('itemDetail')}" th:errors="*{itemDetail}" class="error"></li>
+                <li>
+                    <input type="text"  th:field="*{itemPrice}" id="itemPrice" placeholder="상품가격">
+                </li>
+                <li th:if="${#fields.hasErrors('itemPrice')}" th:errors="*{itemPrice}" class="error"></li>
+                <li class="s1"><span>파일</span><input type="file" name="itemFile"></li>
+                <li class="last-child">
+                    <input type="submit" class="li-last" value="상품등록">
+                    <input type="reset" value="초기회"  class="li-last">
+                </li>
+            </ul>
+        </form>
+
+    </div>
+</div>
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+@charset "UTF-8";
+
+@import url("../common/reset.css");
+@import url("../common/header.css");
+@import url("../common/footer.css");
+
+body{
+    background:#f4f6f9;
+    font-family:Arial,sans-serif;
+    color:#222;
+}
+
+.itemList{
+    width:100%;
+    min-height:calc(100vh - 160px);
+    padding:60px 20px;
+}
+
+.itemList .itemList-con{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.itemList .top{
+    width:100%;
+}
+
+.itemList .search{
+    width:100%;
+    background:#fff;
+    padding:28px 30px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+    margin-bottom:35px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.itemList .search h3{
+    font-size:28px;
+    color:#2c3e50;
+}
+
+.itemList .search form{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.itemList .search select,
+.itemList .search input[type="text"]{
+    height:42px;
+    border:1px solid #dcdfe6;
+    border-radius:10px;
+    padding:0 12px;
+    font-size:14px;
+    outline:none;
+}
+
+.itemList .search input[type="text"]{
+    width:240px;
+}
+
+.itemList .search select:focus,
+.itemList .search input[type="text"]:focus{
+    border-color:#3498db;
+}
+
+.itemList .search input[type="submit"]{
+    height:42px;
+    padding:0 22px;
+    border:none;
+    border-radius:10px;
+    background:#2c3e50;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.item-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+}
+
+.item-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 5px 18px rgba(0,0,0,0.07);
+    transition:.2s;
+}
+
+.item-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+.item-image{
+    width:100%;
+    height:210px;
+    background:#eee;
+    overflow:hidden;
+}
+
+.item-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.item-info{
+    padding:20px;
+}
+
+.item-info .title{
+    font-size:18px;
+    font-weight:700;
+    color:#222;
+    margin-bottom:10px;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.item-info .price{
+    font-size:17px;
+    font-weight:700;
+    color:#3498db;
+    margin-bottom:18px;
+}
+
+.detail-link{
+    width:100%;
+    height:42px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:10px;
+    background:#2c3e50;
+    color:#fff;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:.2s;
+}
+
+.detail-link:hover{
+    background:#1f2937;
+}
+
+/* 페이징 */
+
+.paging{
+    width:100%;
+    margin:45px 0 10px;
+}
+
+.paging ul{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+}
+
+.paging li a,
+.paging li span{
+    min-width:38px;
+    height:38px;
+    padding:0 12px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:10px;
+    background:#fff;
+    border:1px solid #dcdfe6;
+
+    font-size:14px;
+    color:#333;
+}
+
+.paging .now{
+    background:#3498db;
+    border-color:#3498db;
+    color:#fff;
+    font-weight:700;
+}
+
+.paging .span0{
+    color:#aaa;
+    background:#f0f0f0;
+}
+
+.paging .span1:hover,
+.paging .block a:hover{
+    background:#f3f4f6;
+}
+
+/* 반응형 */
+
+@media(max-width:1100px){
+    .item-grid{
+        grid-template-columns:repeat(3, 1fr);
+    }
+}
+
+@media(max-width:850px){
+    .itemList .search{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .itemList .search form{
+        width:100%;
+    }
+
+    .itemList .search input[type="text"]{
+        flex:1;
+        width:auto;
+    }
+
+    .item-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+
+@media(max-width:560px){
+    .itemList{
+        padding:40px 15px;
+    }
+
+    .itemList .search{
+        padding:24px 20px;
+    }
+
+    .itemList .search form{
+        flex-direction:column;
+    }
+
+    .itemList .search select,
+    .itemList .search input[type="text"],
+    .itemList .search input[type="submit"]{
+        width:100%;
+    }
+
+    .item-grid{
+        grid-template-columns:1fr;
+    }
+
+    .paging ul{
+        flex-wrap:wrap;
+    }
+}
