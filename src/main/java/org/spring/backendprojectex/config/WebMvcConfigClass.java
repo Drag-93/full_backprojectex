@@ -19,9 +19,9 @@ public class WebMvcConfigClass implements WebMvcConfigurer {
         String boardPath=boardImgPath.replace("file://","");
 
         //리소스 핸들러 설정
-        registry.addResourceHandler("/upload/item/**")
+        registry.addResourceHandler("/backend/item/**")
                 .addResourceLocations("file:"+itemPath); //실제 이미지 경로 설정
-        registry.addResourceHandler("/upload/board/**")
+        registry.addResourceHandler("/backend/board/**")
                 .addResourceLocations("file:"+boardPath); //실제 이미지 경로 설정
     }
 

@@ -31,7 +31,8 @@ public class WebSecurityConfigClass {
         http.authorizeHttpRequests(authorize ->
                 authorize.requestMatchers("/member/join","/member/login").permitAll() //모든 접근
                         .requestMatchers("/member/logout","/member/detail").authenticated() //로그인 후
-                        .requestMatchers("/admin/**").hasRole("ADMIN") // ADMIN권한
+//                        .requestMatchers("/admin/**").hasRole("ADMIN") // ADMIN권한
+                        .requestMatchers("/admin/**").permitAll() // ADMIN권한
                         .anyRequest().permitAll()// 나머지 모두 허용
         );
         //3. 로그인 설정

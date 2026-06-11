@@ -55,6 +55,32 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Page<MemberDto> pagingSearchMemberList(Pageable pageable, String subject, String search) {
-        return null;
+        Page<MemberEntity> memberEntities = null;
+
+        if (subject == null || search == null || search.trim().isEmpty()) {
+            memberEntities = memberRepository.findAll(pageable);
+        } else {
+            if (subject.equals("userEmail")) {
+                memberEntities = memberRepository.findByUserEmail(pageable, search);
+            } else if (subject.equals("userName")) {
+                memberEntities = memberRepository.findByUserName(pageable, search);
+            } else if (subject.equals("role")) {
+                memberEntities = memberRepository.findByRole(pageable, search.toUpperCase());
+            } else {
+                memberEntities = memberRepository.findAll(pageable);
+            }
+        }
+        return memberEntities.map(memberEntity -> {
+            return MemberDto.builder()
+                    .id(memberEntity.getId())
+                    .userEmail(memberEntity.getUserEmail())
+                    .userPw(memberEntity.getUserPw())
+                    .userName(memberEntity.getUserName())
+                    .role(memberEntity.getRole())
+                    .createTime(memberEntity.getCreateTime())
+                    .updateTime(memberEntity.getUpdateTime())
+                    .build();
+           });
     }
 }
+

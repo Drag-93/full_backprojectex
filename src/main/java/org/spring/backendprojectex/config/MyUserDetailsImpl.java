@@ -47,7 +47,7 @@ public class MyUserDetailsImpl implements UserDetails, OAuth2User {
         collectRoles.add(new GrantedAuthority() {
             @Override
             public String getAuthority() {
-                return "Role_"+memberEntity.getRole().toString();
+                return "ROLE_"+memberEntity.getRole().toString();
             }
         });
         return collectRoles;

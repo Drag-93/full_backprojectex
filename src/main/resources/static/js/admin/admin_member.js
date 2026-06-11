@@ -8,15 +8,17 @@ const memberDetailFn=(event, id)=>{
             console.log(rs)
             const member=rs.member;
 
-            document.querySelector('.userId').innerText=member.id;
-            document.querySelector('.userEmail').innerText=member.userEmail;
-            document.querySelector('.userPw').innerText=member.userPw;
-            document.querySelector('.userName').innerText=member.username;
-            document.querySelector('.role').innerText=member.role;
-            document.querySelector('.createTime').innerText=member.createTime;
+            document.querySelector('.userId2').innerText=member.id;
+            document.querySelector('.userEmail2').innerText=member.userEmail;
+            document.querySelector('.userPw2').innerText=member.userPw;
+            document.querySelector('.userName2').innerText=member.userName;
+            document.querySelector('.role2').innerText=member.role;
+            document.querySelector('.createTime2    ').innerText=member.createTime;
+
+            document.querySelector(".member_modal").classList.add("show");
+
         })
         .catch((err)=>console.log(err));
-    document.querySelector(".member_modal").classList.add("show");
 };
 
 const closeFn=()=>{

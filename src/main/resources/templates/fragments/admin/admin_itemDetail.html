@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="adminItemDetailFragment">
+    <div class="title">상세내용</div>
+    <div class="detail">
+        <div class="detail-con">
+            <div class="left">
+                <div class="detail-image">
+                    <th:block th:if="${item.attachFile==1}">
+                        <img th:src="@{|/backend/item/${item.newFileName}|}" alt="이미지대체문구">
+                    </th:block>
+                    <th:block th:unless="${item.attachFile==1}">
+                        <img src="https://placehold.co/400x250/cccccc/ffffff?text=ITEM"  alt="상품 이미지">
+                    </th:block>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <h1 th:text="${item.itemTitle}"></h1>
+            <form th:action="@{/cart/insert/addCart0}" method="post">
+                <ul>
+                    <li>
+                        <label for="id">ID</label>
+                        <input type="text" name="id" id="id" th:value="${item.id}">
+                    </li>
+                    <li>
+                        <label for="itemTitle">itemTitle</label>
+                        <input type="text" name="itemTitle" id="itemTitle" th:value="${item.itemTitle}">
+                    </li>
+                    <li>
+                        <label for="itemDetail">itemDetail</label>
+                        <input type="text" name="itemDetail" id="itemDetail" th:value="${item.itemDetail}">
+                    </li>
+                    <li>
+                        <label for="itemPrice">itemPrice</label>
+                        <input type="text" name="itemPrice" id="itemPrice" th:value="${item.itemPrice}">
+                    </li>
+                    <li>
+                        <label for="memberId">memberId</label>
+                        <th:block sec:authorize="isAuthenticated()">
+                        <input type="text" name="memberId" id="memberId" th:value="${#authentication.principal.memberEntity.id}" readonly>
+                        </th:block>
+                    </li>
+                    <li>
+                        <label for="itemSize">itemSize</label>
+                        <input type="number" name="itemSize" id="itemSize" th:value="${item.itemSize}">
+                    </li>
+                    <li>
+                        <label>합계금액: </label>
+                        <span id="total"></span>
+                    </li>
+                    <li th:text="${#temporals.format(item.createTime, 'yyyy-MM-dd HH:mm:ss')}"></li>
+                    <li th:text="${#temporals.format(item.updateTime, 'yyyy-MM-dd HH:mm:ss')}"></li>
+                    <li style="display: flex; justify-content: center; gap: 1vw">
+                        <!--관리자 페이지-->
+                        <th:block sec:authorize="isAuthenticated()">
+                            <input type="submit" value="상품수정">
+                            <button type="button" onclick="deleteFn(event)">삭제</button>
+                            <button type="button" onclick="cartFn(event)">상품목록</button>
+                        </th:block>
+                        <!--관리자 페이지-->
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
 
-</body>
+</th:block>
 </html>

@@ -1,4 +1,26 @@
 package org.spring.backendprojectex.config;
 
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
 public class SwaggerConfig {
+    //웹 브라우저에서 Swagger UI를 확인할 수 있는 주소
+    //http://localhost:8090/swagger-ui/index.html
+
+    @Bean
+    public OpenAPI openAPI(){
+        return new OpenAPI()
+                .components(new Components())//API에 필요한 보안(Security), 스키마 등의 컴포넌트를 설정하는 부분
+                .info(info()); //문서의 기본 정보를 주입
+    }
+    private Info info(){
+        return new Info()
+                .title("API Swagger Test") //Swagger UI 화면 맨 위에 노출될 제목
+                .description("RestApiController Test Swagger") //문서에 대한 설명
+                .version("1.0.0");  //API의 현재 버전
+    }
 }

@@ -2,6 +2,7 @@ package org.spring.backendprojectex.shop.dto;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.spring.backendprojectex.member.entity.MemberEntity;
 import org.spring.backendprojectex.shop.entity.FileEntity;
@@ -21,7 +22,7 @@ public class ItemDto {
     private String itemTitle;
     @NotBlank(message = "상품 상세내용을 입력하세요")
     private String itemDetail;
-    @NotBlank(message = "상품 가격을 입력하세요")
+    @NotNull(message = "상품 가격을 입력하세요")
     private int itemPrice;
 
     //파일(이미지)============
