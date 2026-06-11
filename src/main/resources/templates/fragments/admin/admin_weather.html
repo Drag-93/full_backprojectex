@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="adminWeatherFragment">
+    <script th:src="@{|https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoMapKey}|}"></script>
+    <script th:src="@{/js/admin/open/admin_weather.js}" defer></script>
+
+    <div class="title">Weather API</div>
+
+    <div class="weather">
+        <div class="weather-con">
+            <div class="weather-left">
+                <div class="weather-search">
+                    <select name="search" id="weatherSearch">
+                        <option value="Seoul" selected>서울</option>
+                        <option value="Busan">부산</option>
+                        <option value="Gwangju">광주</option>
+                        <option value="Chuncheon">춘천</option>
+                    </select>
+                    <button type="button" onclick="weatherSearchFn()">검색</button>
+                </div>
+
+                <div class="weather-info city">
+                    <span class="label">도시</span>
+                    <span class="con"></span>
+                    <span class="description"></span>
+                    <span class="icon"></span>
+                </div>
+
+                <div class="weather-info temp_min">
+                    <span class="label">최저온도</span>
+                    <span class="con"></span>
+                </div>
+
+                <div class="weather-info temp_max">
+                    <span class="label">최고온도</span>
+                    <span class="con"></span>
+                </div>
+
+                <div class="weather-info sunrise">
+                    <span class="label">일출시간</span>
+                    <span class="con"></span>
+                </div>
+
+                <div class="weather-info sunset">
+                    <span class="label">일몰시간</span>
+                    <span class="con"></span>
+                </div>
+            </div>
+
+            <div class="weather-right">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</html>

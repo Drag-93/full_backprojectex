@@ -25,6 +25,15 @@
                 <th:block th:if="${key=='itemDetail'}">
                     <th:block th:replace="~{fragments/admin/admin_itemDetail :: adminItemDetailFragment}"></th:block>
                 </th:block>
+                <th:block th:if="${key=='weather'}">
+                    <th:block th:replace="~{fragments/admin/admin_weather :: adminWeatherFragment}"></th:block>
+                </th:block>
+                <th:block th:if="${key=='scene'}">
+                    <th:block th:replace="~{fragments/admin/admin_scene :: adminSceneFragment}"></th:block>
+                </th:block>
+                <th:block th:if="${key=='bus'}">
+                    <th:block th:replace="~{fragments/admin/admin_bus :: adminBusFragment}"></th:block>
+                </th:block>
             </div>
         </div>
     </div>

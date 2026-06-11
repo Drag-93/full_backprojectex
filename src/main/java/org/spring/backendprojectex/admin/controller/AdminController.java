@@ -7,6 +7,7 @@ import org.spring.backendprojectex.member.dto.MemberDto;
 import org.spring.backendprojectex.member.service.MemberService;
 import org.spring.backendprojectex.shop.dto.ItemDto;
 import org.spring.backendprojectex.shop.service.ItemService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,6 +26,9 @@ import java.io.IOException;
 public class AdminController {
     private final MemberService memberService;
     private final ItemService itemService;
+
+    @Value("${kakao.map.appkey}")
+    private String kakaoMapKey;
 
     @GetMapping({"/index", "/", "/member"})
     public String member(@PageableDefault(page = 0, size = 8, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
@@ -82,6 +86,13 @@ public class AdminController {
         return "admin/admin";
     }
 
+    @GetMapping("/weather")
+    public String weather(Model model){
+        System.out.println("카카오키="+kakaoMapKey);
+        model.addAttribute("kakaoMapKey",kakaoMapKey);
+        model.addAttribute("key","weather");
+        return "admin/admin";
+    }
 
 
     private void setPaging(Model model, Page<?> pageData, int blockSize) {

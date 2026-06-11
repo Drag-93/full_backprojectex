@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="adminSceneFragment">
+<div class="movie">
+    <div class="movie-con">
+        <div class="left">
+            <h1>영화 API</h1>
+            <div class="menu">
+                <ul>
+                    <li class="scene-list active"><a href="/open/movie" style="background-color: inherit;color: inherit; text-decoration: none;">영화목록조회</a></li>
+                    <li class="boxOffice" onclick="boxOfficeFn()">박스오피스</li>
+                    <li>영화인 목록 조회</li>
+                    <li>추가내용</li>
+                </ul>
+            </div>
+        </div>
+        <table class="t-table">
+            <thead>
+            <tr>
+                <th>제목</th>
+                <th>개봉일</th>
+                <th>장르</th>
+                <th>국적</th>
+                <th>상태</th>
+                <th>영화코드</th>
+                <th>보기</th>
+            </tr>
+            </thead>
+            <tbody class="scene-content">
+
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="7">
+                    <div class="pagination" ></div>
+                </td>
+            </tr>
+            </tfoot>
+
+        </table>
+    </div>
+</div>
+<div class="movie-detail-modal">
+    <div class="movie-detail-modal-con">
+        <span class="modal-close-btn" onclick="closeModal()">X</span>
+        <h1>영화제목(1234)</h1>
+        <ul>
+            <li>개봉일: 2025-09-30</li>
+            <li>상태: 개봉</li>
+            <li>상영시간: 120분</li>
+            <li>감독: 홍길동</li>
+            <li>배우: 김철수,이영희</li>
+            <li>출처: 영화진흥위원회</li>
+        </ul>
+    </div>
+</div>
+</th:block>
+</html>
