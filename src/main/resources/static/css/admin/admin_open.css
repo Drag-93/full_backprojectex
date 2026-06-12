@@ -143,3 +143,810 @@
         min-height: 320px;
     }
 }
+/* ================================
+   BUS API
+================================ */
+
+.bus {
+    width: 100%;
+}
+
+.bus-con {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 상단 카드 */
+.bus-top {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 26px;
+    box-sizing: border-box;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* 검색 */
+.bus-search {
+    margin-bottom: 18px;
+}
+
+.bus-search-con {
+    display: flex;
+    gap: 10px;
+}
+
+.bus-search-con input {
+    width: 220px;
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.bus-search-con button {
+    height: 40px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 9px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.bus-search-con button:hover {
+    background-color: #1d4ed8;
+}
+
+/* 테이블 전체 스크롤 */
+.bus-list {
+    width: 100%;
+    max-height: 335px;
+    overflow: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+/* 테이블 */
+.bus-table {
+    width: 100%;
+    min-width: 1150px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.bus-table thead th {
+    height: 46px;
+    background-color: #f9fafb;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 800;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.bus-table th,
+.bus-table td {
+    height: 48px;
+    padding: 0 10px;
+    border: none;
+    border-bottom: 1px solid #edf0f3;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
+    color: #374151;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+.bus-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* 컬럼 너비 */
+.bus-table th:nth-child(1),
+.bus-table td:nth-child(1) {
+    width: 10%;
+}
+
+.bus-table th:nth-child(2),
+.bus-table td:nth-child(2) {
+    width: 7%;
+}
+
+.bus-table th:nth-child(3),
+.bus-table td:nth-child(3) {
+    width: 15%;
+}
+
+.bus-table th:nth-child(4),
+.bus-table td:nth-child(4) {
+    width: 15%;
+}
+
+.bus-table th:nth-child(5),
+.bus-table td:nth-child(5) {
+    width: 12%;
+}
+
+.bus-table th:nth-child(6),
+.bus-table td:nth-child(6) {
+    width: 12%;
+}
+
+.bus-table th:nth-child(7),
+.bus-table td:nth-child(7) {
+    width: 7%;
+}
+
+.bus-table th:nth-child(8),
+.bus-table td:nth-child(8) {
+    width: 10%;
+}
+
+.bus-table th:nth-child(9),
+.bus-table td:nth-child(9) {
+    width: 12%;
+}
+
+/* 정류장정보 버튼 */
+.bus-table td[onclick] {
+    background-color: transparent !important;
+    font-size: 0;
+    cursor: pointer;
+}
+
+.bus-table td[onclick]::before {
+    content: "보기";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 28px;
+    border-radius: 999px;
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.bus-table td[onclick]:hover::before {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* 하단 정류장 + 지도 */
+.bus-bottom {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 330px minmax(0, 1fr);
+    gap: 24px;
+}
+
+.bus-station,
+.map-con {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-sizing: border-box;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.bus-station h1 {
+    margin-bottom: 16px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.bus-station-con {
+    height: 420px;
+    overflow-y: auto;
+    padding-right: 6px;
+    box-sizing: border-box;
+}
+
+.bus-station-con ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bus-station-con li {
+    padding: 11px 13px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background-color: #f9fafb;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.bus-station-con li:hover {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+
+/* 지도 */
+.map-con {
+    min-width: 0;
+}
+
+#bus-map {
+    width: 100%;
+    height: 520px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: #f3f4f6;
+    box-sizing: border-box;
+}
+
+/* 모달 */
+.bus-detail-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background-color: rgba(0, 0, 0, 0.45);
+    justify-content: center;
+    align-items: center;
+}
+
+.bus-detail-modal.show {
+    display: flex;
+}
+
+.bus-detail-modal-con {
+    width: 760px;
+    max-width: 95%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.bus-detail-modal-con h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.bus-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+#bus-map-view {
+    width: 100%;
+    height: 520px;
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: #f3f4f6;
+}
+
+/* 스크롤바 */
+.bus-list::-webkit-scrollbar,
+.bus-station-con::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.bus-list::-webkit-scrollbar-thumb,
+.bus-station-con::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
+
+.bus-list::-webkit-scrollbar-track,
+.bus-station-con::-webkit-scrollbar-track {
+    background-color: #f1f5f9;
+}
+
+/* 반응형 */
+@media screen and (max-width: 1100px) {
+    .bus-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .bus-station-con {
+        height: 260px;
+    }
+
+    #bus-map {
+        height: 360px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bus-top,
+    .bus-station,
+    .map-con {
+        padding: 20px 16px;
+    }
+
+    .bus-search-con {
+        flex-direction: column;
+    }
+
+    .bus-search-con input,
+    .bus-search-con button {
+        width: 100%;
+    }
+
+    .bus-table {
+        min-width: 1050px;
+    }
+
+    .bus-list {
+        max-height: 315px;
+    }
+
+    #bus-map,
+    #bus-map-view {
+        height: 320px;
+    }
+}
+
+/* ================================
+   SCENE API
+================================ */
+
+.scene {
+    width: 100%;
+}
+
+.scene-con {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 26px;
+    box-sizing: border-box;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+}
+
+.scene table {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.scene table th,
+.scene table td {
+    height: 50px;
+    padding: 0 12px;
+    border: none;
+    border-bottom: 1px solid #edf0f3;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #374151;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+.scene table th {
+    background-color: #f9fafb;
+    color: #111827;
+    font-weight: 800;
+}
+
+/* 메뉴가 들어가는 첫 번째 thead */
+.scene table > thead:first-child th {
+    height: auto;
+    padding: 14px;
+    background-color: #ffffff;
+}
+
+/* 두 번째 thead 컬럼 헤더 */
+.scene-table-head th {
+    height: 50px;
+    background-color: #f9fafb;
+}
+
+/* 영화목록 8컬럼 비율 */
+.scene-table-head tr th:nth-child(1),
+.scene-content tr td:nth-child(1) {
+    width: 9%;
+}
+
+.scene-table-head tr th:nth-child(2),
+.scene-content tr td:nth-child(2) {
+    width: 18%;
+}
+
+.scene-table-head tr th:nth-child(3),
+.scene-content tr td:nth-child(3) {
+    width: 12%;
+}
+
+.scene-table-head tr th:nth-child(4),
+.scene-content tr td:nth-child(4) {
+    width: 22%;
+}
+
+.scene-table-head tr th:nth-child(5),
+.scene-content tr td:nth-child(5) {
+    width: 9%;
+}
+
+.scene-table-head tr th:nth-child(6),
+.scene-content tr td:nth-child(6) {
+    width: 10%;
+}
+
+.scene-table-head tr th:nth-child(7),
+.scene-content tr td:nth-child(7) {
+    width: 12%;
+}
+
+.scene-table-head tr th:nth-child(8),
+.scene-content tr td:nth-child(8) {
+    width: 8%;
+}
+
+.scene-content tr:hover {
+    background-color: #f9fafb;
+}
+
+/* 상단 메뉴 */
+.menu {
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+.menu-left {
+    min-width: 0;
+}
+
+.menu-left ul {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.menu-left ul li {
+    height: 36px;
+    padding: 0 15px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.menu-left ul li:hover,
+.menu-left ul li.active {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* 검색 영역 */
+.menu form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.menu select,
+.menu input[type="text"] {
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    background-color: #ffffff;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.menu select {
+    width: 120px;
+}
+
+.menu input[type="text"] {
+    width: 210px;
+}
+
+.menu select:focus,
+.menu input[type="text"]:focus {
+    border-color: #2563eb;
+}
+
+.menu input[type="button"] {
+    height: 38px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 9px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.menu input[type="button"]:hover {
+    background-color: #1d4ed8;
+}
+
+/* 보기 버튼 */
+.scene table button {
+    min-width: 58px;
+    height: 30px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 999px;
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.scene table button:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* 출처 행 */
+.scene-content tr:last-child td[colspan] {
+    background-color: #f9fafb;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* 박스오피스 상단 폼 */
+.box-office-form {
+    width: 100%;
+    min-height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.box-office-form label {
+    color: #374151;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.box-office-form input[type="date"] {
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.box-office-form input[type="radio"] {
+    margin-right: 4px;
+}
+
+.box-office-form button {
+    height: 38px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 9px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.box-office-form button:hover {
+    background-color: #1d4ed8;
+}
+
+/* 박스오피스 정보 줄 */
+.scene-table-head td[colspan] {
+    background-color: #ffffff;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* 모달 */
+.scene-detail-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background-color: rgba(0, 0, 0, 0.45);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.scene-detail-modal.show {
+    display: flex;
+}
+
+.scene-detail-modal-con {
+    width: 520px;
+    max-width: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+}
+
+.scene-detail-modal-con h1 {
+    margin-bottom: 24px;
+    padding-right: 36px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.35;
+}
+
+.scene-detail-modal-con ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.scene-detail-modal-con ul li {
+    min-height: 44px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 700;
+    box-sizing: border-box;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    color: #6b7280;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.modal-close-btn:hover {
+    color: #ef4444;
+}
+
+/* 스크롤바 */
+.scene-con::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scene-con::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
+
+.scene-con::-webkit-scrollbar-track {
+    background-color: #f1f5f9;
+}
+
+/* 반응형 */
+@media screen and (max-width: 1200px) {
+    .menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu form {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .menu input[type="text"] {
+        flex: 1;
+        min-width: 180px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .scene-con {
+        padding: 20px 16px;
+    }
+
+    .menu-left ul {
+        gap: 6px;
+    }
+
+    .menu-left ul li {
+        height: 34px;
+        padding: 0 12px;
+        font-size: 13px;
+    }
+
+    .menu form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .menu select,
+    .menu input[type="text"],
+    .menu input[type="button"] {
+        width: 100%;
+    }
+
+    .scene table {
+        min-width: 900px;
+    }
+
+    .scene-detail-modal-con {
+        padding: 28px 20px;
+    }
+}
+
+
+.pagination {
+    padding: 18px 0 4px;
+}
+
+.pagination ul {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.pagination button {
+    min-width: 34px;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #374151;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled),
+.pagination button.active {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+
+.pagination button:disabled {
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: default;
+}

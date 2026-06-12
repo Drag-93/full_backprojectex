@@ -94,6 +94,20 @@ public class AdminController {
         return "admin/admin";
     }
 
+    @GetMapping("/scene")
+    public String scene(Model model){
+        model.addAttribute("key","scene");
+        return "admin/admin";
+    }
+
+    @GetMapping("/bus")
+    public String bus(Model model){
+        System.out.println("카카오키="+kakaoMapKey);
+        model.addAttribute("kakaoMapKey",kakaoMapKey);
+        model.addAttribute("key","bus");
+        return "admin/admin";
+    }
+
 
     private void setPaging(Model model, Page<?> pageData, int blockSize) {
         System.out.println(pageData);
