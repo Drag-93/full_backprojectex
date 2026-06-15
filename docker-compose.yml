@@ -1,0 +1,73 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_DATABASE: backendprojectdb
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - backpj-network
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost","-u","root","-p1234"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: "1234"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - backpj-network
+
+  backendprojectex:
+    build: .
+    container_name: backendprojectex
+    restart: "no"
+    ports:
+      - "8096:8096"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+
+    volumes:
+      - "E:/full/backend/item:/workspace/upload/item"
+      - "E:/full/backend/board:/workspace/upload/board"
+
+    networks:
+      - backpj-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/backendprojectdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: "1234"
+
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: admin
+      SPRING_RABBITMQ_PASSWORD: "1234"
+
+      IMG_PATH_ITEM: "file:///workspace/upload/item/"
+      IMG_PATH_BOARD: "file:///workspace/upload/board/"
+
+volumes:
+  mysql-data:
+  rabbitmq-data:
+
+networks:
+  backpj-network:
+    name: backpj-network
+    external: true

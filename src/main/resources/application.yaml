@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/backendprojectdb
+    url: jdbc:mysql://mysql:3306/backendprojectdb
     username: root
     password: 1234
 
@@ -36,7 +36,15 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:rabbitmq} #Docker 내부 배포 시 환경변수로 'rabbitmq'주입 가능
+    port: ${SPRING_RABBITMQ_PORT:5672}
+    username: ${SRPING_RABBITMQ_USERNAME:admin} #docker run 의 default user
+    password: ${SRPING_RABBITMQ_PASSWORD:1234} #docker run 의 default password
 
+rabbitmq.queue.name: ec2.queue
+rabbitmq.exchange.name: ec2.exchange
+rabbitmq.question.routing.key: ec2.routing.#
 
 #로그 설정
 logging:

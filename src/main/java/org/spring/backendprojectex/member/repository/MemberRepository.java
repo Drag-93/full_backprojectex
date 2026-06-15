@@ -17,5 +17,7 @@ public interface MemberRepository extends JpaRepository<MemberEntity,Long> {
 
     Page<MemberEntity> findByUserName(Pageable pageable, String search);
 
+    Optional<MemberEntity> findByUserName(String userName);
+
     Page<MemberEntity> findByRole(Pageable pageable, String upperCase);
 }

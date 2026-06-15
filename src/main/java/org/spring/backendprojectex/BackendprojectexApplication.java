@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 @SpringBootApplication
 @EnableJpaAuditing //공용 시간 설정
@@ -19,4 +20,9 @@ public class BackendprojectexApplication {
 //	public PasswordEncoder passwordEncoder(){
 //		return new BCryptPasswordEncoder();
 //	}
+	@Bean
+	public ServerEndpointExporter serverEndpointExporter(){
+		return new ServerEndpointExporter();
+	}
+
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div class="admin_chat" th:fragment="adminChatFragment">
+    <script th:src="@{/webjars/sockjs-client/sockjs.min.js}" defer></script>
+    <script th:src="@{/webjars/stomp-websocket/stomp.min.js}" defer></script>
+    <script th:src="@{/js/admin/admin_chat.js}" defer></script>
+    <div class="title">Chat</div>
+<div class="chat">
+    <div id="chat-bot">
+        <div class="wrap">
+            <button type="button" id="btn-chat-open" onclick="openChat()">OPEN</button>
+        </div>
+        <div id="chat-disp">
+            <div id="chat-disp-con">
+                <div id="chat-header">
+                    <span>Chat-Bot(WebSocket)</span>
+                    <button type="button" id="close" onclick="disconnect()">X</button>
+                </div>
+                <div id="chat-content"></div>
+                <div id="chat-question" class="flex between">
+                    <input type="text" id="question" placeholder="질문을 입력하세요"/>
+                    <button type="button" id="btn-msg-send" onclick="msgSendClickFn()">전송</button>
+                    <button type="button" id="rabbit-btn-msg-send" onclick="rabbitMsgSendClickFn()">전송</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</html>

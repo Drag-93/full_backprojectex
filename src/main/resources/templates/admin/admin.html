@@ -34,6 +34,9 @@
                 <th:block th:if="${key=='bus'}">
                     <th:block th:replace="~{fragments/admin/admin_bus :: adminBusFragment}"></th:block>
                 </th:block>
+                <th:block th:if="${key=='chat'}">
+                    <th:block th:replace="~{fragments/admin/admin_chat :: adminChatFragment}"></th:block>
+                </th:block>
             </div>
         </div>
     </div>

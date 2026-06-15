@@ -107,6 +107,11 @@ public class AdminController {
         model.addAttribute("key","bus");
         return "admin/admin";
     }
+    @GetMapping("/chat")
+    public String chat(Model model){
+        model.addAttribute("key","chat");
+        return "admin/admin";
+    }
 
 
     private void setPaging(Model model, Page<?> pageData, int blockSize) {
