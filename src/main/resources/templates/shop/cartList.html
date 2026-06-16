@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>장바구니</title>
+    <link rel="stylesheet" th:href="@{/css/shop/cartList.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+<div class="cartList">
+    <div class="cartList-con">
+        <h1>장바구니 목록</h1>
+        <th:block th:if="${itemList.isEmpty()}">
+            <span> 장바구니 목록이 없습니다</span>
+            </th:block>
+        <th:block th:unless="${itemList.isEmpty()}">
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>itemSize</th>
+                <th>memberId</th>
+                <th>상품(Id)</th>
+                <th>itemTitle</th>
+                <th>itemDetail</th>
+                <th>itemPrice</th>
+                <th>createTime</th>
+                <th>updateTime</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item:${itemList}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.itemSize}"></td>
+                <td th:text="${item.cartEntity.memberEntity.id}"></td>
+                <td th:text="${item.itemEntity.id}"></td>
+                <td th:text="${item.itemEntity.itemTitle}"></td>
+                <td th:text="${item.itemEntity.itemDetail}"></td>
+                <td th:text="${item.itemEntity.itemPrice}"></td>
+                <td th:text="${item.createTime}"></td>
+                <td th:text="${item.updateTime}"></td>
+            </tr>
+            <tr>
+                <td colspan="9">
+                    총 금액:
+                    <span th:text="${#numbers.formatInteger(total, 3, 'COMMA')}"></span>원
+                </td>
+            </tr>
+            <tr>
+                <td colspan="9">
+                    <a th:href="@{/shop/index}">상품(상품리스트)</a>
+                    <a th:href="@{/payment/{memberId}(memberId=${itemList.get(0).cartEntity.memberEntity.id})}">결제하기</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </th:block>
+    </div>
+</div>
+
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+</html>

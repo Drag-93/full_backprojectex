@@ -9,7 +9,6 @@
         <div class="gnb">
             <ul>
                 <li><a th:href="@{/shop/index}" class="btn-order">SHOP_HOME</a></li>
-                <li><a th:href="@{/cart}">🛒장바구니</a></li>
                 <th:block sec:authorize="hasRole('ADMIN')">
                     <li> <a th:href="@{/shop/insert}">✨ 상품등록</a> </li>
                     <li> <a th:href="@{/admin}">🛠️ 관리자페이지</a> </li>
@@ -19,7 +18,8 @@
                     <li><a th:href="@{/member/join}">회원가입</a></li>
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
-                    <li><a th:href="@{/payment}">📋 주문내역</a></li>
+                <li><a th:href="@{/cart/cartList/{id}(id=${#authentication.principal.memberEntity.id})}">🛒장바구니</a></li>
+                    <li><a th:href="@{/payment/paymentList/{id}(id=${#authentication.principal.memberEntity.id})}">📋 주문내역</a></li>
                     <li><a th:href="@{/member/logout}" class="btn-auth">로그아웃</a></li>
                 </th:block>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>상품상세페이지</title>
-    <script th:src="@{/js/detail.js}" defer></script>
+    <script th:src="@{/js/shop/detail.js}" defer></script>
     <link rel="stylesheet" th:href="@{/css/shop/itemDetail.css}">
 </head>
 <body>
@@ -23,23 +23,23 @@
         </div>
        <div class="right">
            <h1 th:text="${item.itemTitle}"></h1>
-           <form th:action="@{/cart/insert/addCart0}" method="post">
+           <form th:action="@{/cart/insert/addCart}" method="post">
                <ul>
                    <li>
                        <label for="id">ID</label>
-                       <input type="text" name="id" id="id" th:value="${item.id}">
+                       <input type="text" name="id" id="id" th:value="${item.id}" readonly>
                    </li>
                    <li>
                        <label for="itemTitle">itemTitle</label>
-                       <input type="text" name="itemTitle" id="itemTitle" th:value="${item.itemTitle}">
+                       <input type="text" name="itemTitle" id="itemTitle" th:value="${item.itemTitle}" readonly>
                    </li>
                    <li>
                        <label for="itemDetail">itemDetail</label>
-                       <input type="text" name="itemDetail" id="itemDetail" th:value="${item.itemDetail}">
+                       <input type="text" name="itemDetail" id="itemDetail" th:value="${item.itemDetail}" readonly>
                    </li>
                    <li>
                        <label for="itemPrice">itemPrice</label>
-                       <input type="text" name="itemPrice" id="itemPrice" th:value="${item.itemPrice}">
+                       <input type="text" name="itemPrice" id="itemPrice" th:value="${item.itemPrice}" readonly>
                    </li>
                    <li>
                        <label for="memberId">memberId</label>
@@ -51,7 +51,7 @@
                    </li>
                    <li>
                        <label for="itemSize">상품개수</label>
-                       <input type="number" name="itemSize" id="itemSize" min="1" th:value="${item.itemSize}">
+                       <input type="number" name="itemSize" id="itemSize" min="1" value="1">
                    </li>
                    <li>
                        <label>합계금액: </label>

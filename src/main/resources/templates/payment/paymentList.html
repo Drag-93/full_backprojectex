@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/payment/paymentList.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common/header :: headerFragment}"></div>
+<div class="paymentList">
+    <div class="paymentList-con">
+
+        <th:block th:if="${paymentList == null or #lists.isEmpty(paymentList)}">
+            <div class="null">
+                <h1>주문내역이 없습니다.</h1>
+            </div>
+        </th:block>
+
+        <ul th:unless="${paymentList == null or #lists.isEmpty(paymentList)}">
+            <li th:each="payment : ${paymentList}">
+                <div class="top">
+                    <ul>
+                        <li><span>주문방법: </span><span th:text="${payment.paymentType}"></span></li>
+                        <li><span>주문처: </span><span th:text="${payment.orderPost}"></span></li>
+                        <li><span>배송주소: </span><span th:text="${payment.orderAddr}"></span></li>
+                        <li><span>수령방식: </span><span th:text="${payment.orderMethod}"></span></li>
+                        <li><span>주문금액: </span><span th:text="${payment.payResult}"></span></li>
+                    </ul>
+                </div>
+
+                <div class="bottom">
+                    <ul>
+                        <li th:each="paymentItem : ${payment.paymentItemEntities}">
+                            <span th:text="${paymentItem.paymentItemTitle}"></span>
+                            <span th:text="${paymentItem.paymentItemPrice}"></span>
+                            <span th:text="${paymentItem.paymentItemSize}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<div th:replace="~{fragments/common/footer :: footerFragment}"></div>
+</body>
+</html>

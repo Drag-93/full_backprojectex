@@ -3,6 +3,7 @@ package org.spring.backendprojectex.config;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -13,9 +14,11 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 
 @Component
+@Log4j2
 public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request,
@@ -38,10 +41,14 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
         }else{
             errorMessage="알 수 없는 이유로 로그인 실패하였습니다. 관리자에게 문의하세요";
         }
-        errorMessage= URLEncoder.encode(errorMessage,"UTF-8");
-        //  /member/login 페이지로 이동, error, exception 보냄
-        setDefaultFailureUrl("/member/login?error=true&exception"+errorMessage);
-        super.onAuthenticationFailure(request,response,exception);
+        response.setContentType("text/html; charset=UTF-8");
+
+        PrintWriter out = response.getWriter();
+        out.println("<script>");
+        out.println("alert('" + errorMessage + "');");
+        out.println("location.href='/member/login';");
+        out.println("</script>");
+        out.close();
     }
 
 }

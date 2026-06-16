@@ -1,0 +1,128 @@
+@import url("../common/reset.css");
+@import url("../common/header.css");
+@import url("../common/footer.css");
+
+.paymentList {
+    width: 100%;
+    min-height: 70vh;
+    padding: 60px 20px;
+    background-color: #f5f6f8;
+}
+
+.paymentList-con {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.paymentList-con > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.paymentList-con > ul > li {
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.paymentList .top {
+    padding: 28px 32px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.paymentList .top > ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 30px;
+}
+
+.paymentList .top li {
+    font-size: 15px;
+    color: #333;
+}
+
+.paymentList .top li:first-child {
+    grid-column: 1 / -1;
+    font-size: 20px;
+    font-weight: bold;
+    color: #111;
+}
+
+.paymentList .top span:first-child {
+    font-weight: bold;
+    color: #222;
+}
+
+.paymentList .bottom {
+    padding: 24px 32px 30px;
+    background-color: #fafafa;
+}
+
+.paymentList .bottom > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.paymentList .bottom li {
+    display: grid;
+    grid-template-columns: 1fr 140px 100px;
+    align-items: center;
+    padding: 14px 18px;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #333;
+}
+
+.paymentList .bottom li span:first-child {
+    font-weight: bold;
+    color: #222;
+}
+
+.paymentList .bottom li span:nth-child(2)::after {
+    content: "원";
+}
+
+.paymentList .bottom li span:nth-child(3)::before {
+    content: "수량 ";
+}
+
+.paymentList .null {
+    min-height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.paymentList .null h1 {
+    font-size: 28px;
+    color: #555;
+}
+
+@media screen and (max-width: 768px) {
+    .paymentList {
+        padding: 40px 12px;
+    }
+
+    .paymentList .top,
+    .paymentList .bottom {
+        padding: 22px 18px;
+    }
+
+    .paymentList .top > ul {
+        grid-template-columns: 1fr;
+    }
+
+    .paymentList .bottom li {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}

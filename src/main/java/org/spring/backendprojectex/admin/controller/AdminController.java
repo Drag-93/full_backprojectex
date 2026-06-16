@@ -30,7 +30,7 @@ public class AdminController {
     @Value("${kakao.map.appkey}")
     private String kakaoMapKey;
 
-    @GetMapping({"/index", "/", "/member"})
+    @GetMapping({"/index","", "/", "/member"})
     public String member(@PageableDefault(page = 0, size = 8, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
                          @RequestParam(name = "subject", required = false) String subject,
                          @RequestParam(name = "search", required = false) String search,

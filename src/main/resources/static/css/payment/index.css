@@ -1,0 +1,133 @@
+@import url("../common/reset.css");
+@import url("../common/header.css");
+@import url("../common/footer.css");
+
+.payment {
+    width: 100%;
+    min-height: 70vh;
+    padding: 60px 20px;
+    background-color: #f5f6f8;
+}
+
+.payment-con {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+}
+
+.payment-con h1 {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 28px;
+    color: #222;
+}
+
+.payment-con table {
+    width: 100%;
+    min-width: 1100px;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.payment-con th {
+    padding: 14px 10px;
+    background-color: #222;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.payment-con td {
+    padding: 14px 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    color: #333;
+}
+
+.payment-con tbody tr:hover {
+    background-color: #f7f7f7;
+}
+
+.payment-con tbody tr:nth-last-child(2) td {
+    padding: 24px 20px;
+    text-align: left;
+    background-color: #fafafa;
+    line-height: 2.4;
+}
+
+.payment-con select,
+.payment-con input[type="text"] {
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    background-color: #fff;
+}
+
+.payment-con input[type="text"] {
+    width: 260px;
+}
+
+.payment-con select:focus,
+.payment-con input[type="text"]:focus {
+    border-color: #222;
+}
+
+#payResult {
+    font-weight: bold;
+    font-size: 18px;
+    color: #111;
+}
+
+#cartId,
+#memberId {
+    font-weight: bold;
+    color: #333;
+}
+
+.payment-con tbody tr:last-child td {
+    padding-top: 26px;
+    border-bottom: none;
+    text-align: center;
+}
+
+.payment-con a,
+.payment-con button {
+    display: inline-block;
+    min-width: 130px;
+    margin: 0 6px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.payment-con a:hover,
+.payment-con button:hover {
+    background-color: #444;
+}
+
+@media screen and (max-width: 768px) {
+    .payment {
+        padding: 40px 12px;
+    }
+
+    .payment-con {
+        padding: 25px 15px;
+    }
+
+    .payment-con h1 {
+        font-size: 24px;
+    }
+}

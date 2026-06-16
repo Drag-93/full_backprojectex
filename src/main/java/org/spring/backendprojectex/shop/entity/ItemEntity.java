@@ -45,4 +45,8 @@ public class ItemEntity  extends BasicTime {
     @OneToMany(mappedBy="itemEntity", fetch = FetchType.LAZY,
     cascade = CascadeType.REMOVE, orphanRemoval = true)//게시글이 삭제되면 파일도 삭제
     private List<FileEntity> fileEntities;
+
+    //1:N
+    @OneToMany(mappedBy = "itemEntity",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+    private List<ItemListEntity> itemListEntities;
 }
