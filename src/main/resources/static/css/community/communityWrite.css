@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+@import url("../common/reset.css");
+@import url("../common/header.css");
+@import url("../common/footer.css");
+
+body{
+    background:#f4f6f9;
+    font-family:Arial,sans-serif;
+    color:#222;
+}
+
+.communityWrite{
+    width:100%;
+    min-height:calc(100vh - 160px);
+    padding:60px 20px;
+}
+
+.communityWrite-con{
+    width:100%;
+    max-width:850px;
+    margin:0 auto;
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.communityWrite-con h1{
+    font-size:32px;
+    color:#2c3e50;
+    margin-bottom:35px;
+    padding-bottom:20px;
+    border-bottom:2px solid #f1f1f1;
+}
+
+.communityWrite form{
+    width:100%;
+}
+
+.form-group{
+    width:100%;
+    margin-bottom:22px;
+}
+
+.form-group label,
+.form-group .s1 span{
+    display:block;
+    font-size:15px;
+    font-weight:700;
+    color:#555;
+    margin-bottom:9px;
+}
+
+.input-text,
+.select-box,
+#memberId,
+.textarea-content{
+    width:100%;
+    border:1px solid #dcdfe6;
+    border-radius:10px;
+    padding:0 14px;
+    font-size:15px;
+    background:#fafafa;
+    outline:none;
+}
+
+.input-text,
+.select-box,
+#memberId{
+    height:46px;
+}
+
+.textarea-content{
+    min-height:260px;
+    padding:14px;
+    resize:none;
+    line-height:1.6;
+}
+
+.input-text:focus,
+.select-box:focus,
+#memberId:focus,
+.textarea-content:focus{
+    border-color:#3498db;
+    background:#fff;
+}
+
+#memberId{
+    background:#f0f2f5;
+    color:#777;
+}
+
+.form-group input[type="file"]{
+    width:100%;
+    height:46px;
+    padding:10px;
+    border:1px solid #dcdfe6;
+    border-radius:10px;
+    background:#fafafa;
+    font-size:14px;
+    cursor:pointer;
+}
+
+.form-group input[type="file"]::file-selector-button{
+    height:28px;
+    padding:0 14px;
+    margin-right:12px;
+    border:none;
+    border-radius:7px;
+    background:#2c3e50;
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.form-group input[type="file"]::file-selector-button:hover{
+    background:#1f2937;
+}
+
+.btn-group{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:35px;
+}
+
+.btn-group a,
+.btn-group button{
+    min-width:130px;
+    height:45px;
+    border:none;
+    border-radius:10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.btn-cancel{
+    background:#e5e7eb;
+    color:#333;
+}
+
+.btn-cancel:hover{
+    background:#d1d5db;
+}
+
+.btn-submit{
+    background:#2c3e50;
+    color:#fff;
+}
+
+.btn-submit:hover{
+    background:#1f2937;
+}
+
+@media(max-width:600px){
+    .communityWrite{
+        padding:40px 15px;
+    }
+
+    .communityWrite-con{
+        padding:28px 22px;
+    }
+
+    .communityWrite-con h1{
+        font-size:25px;
+    }
+
+    .btn-group{
+        flex-direction:column;
+    }
+
+    .btn-group a,
+    .btn-group button{
+        width:100%;
+    }
+}

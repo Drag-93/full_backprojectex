@@ -1,0 +1,201 @@
+@charset "UTF-8";
+
+@import url("../common/reset.css");
+@import url("../common/header.css");
+@import url("../common/footer.css");
+
+body{
+    background:#f4f6f9;
+    font-family:Arial,sans-serif;
+    color:#222;
+}
+
+.detail{
+    width:100%;
+    max-width:1300px;
+    margin:60px auto;
+    padding:0 20px;
+
+    display:flex;
+    gap:40px;
+    align-items:flex-start;
+}
+
+/* 왼쪽 이미지 */
+
+.detail-con{
+    flex:0 0 450px;
+}
+
+.detail-image{
+    width:100%;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.detail-image img{
+    width:100%;
+    height:450px;
+    object-fit:cover;
+    display:block;
+}
+
+/* 오른쪽 */
+
+.right{
+    flex:1;
+    background:#fff;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.right h1{
+    font-size:32px;
+    margin-bottom:30px;
+    color:#2c3e50;
+    border-bottom:2px solid #f1f1f1;
+    padding-bottom:20px;
+}
+
+.right ul{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.right li{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.right label{
+    font-size:14px;
+    font-weight:700;
+    color:#666;
+}
+
+.right input[type="text"],
+.right textarea{
+    width:100%;
+    border:1px solid #dcdfe6;
+    border-radius:10px;
+    padding:12px 15px;
+    font-size:15px;
+    background:#fafafa;
+}
+
+.right input[readonly]{
+    background:#f0f2f5;
+}
+
+.right textarea{
+    min-height:220px;
+    resize:none;
+}
+
+.right input:focus,
+.right textarea:focus{
+    outline:none;
+    border-color:#3498db;
+    background:#fff;
+}
+
+.right .date{
+    font-size:14px;
+    color:#777;
+}
+
+/* 버튼 */
+
+.button-group{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:15px;
+}
+
+.button-group input,
+.button-group button{
+    min-width:130px;
+    height:45px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#2c3e50;
+    color:#fff;
+
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.button-group input:hover,
+.button-group button:hover{
+    background:#1f2937;
+}
+
+.button-group button:nth-child(2){
+    background:#e74c3c;
+}
+
+.button-group button:nth-child(2):hover{
+    background:#c0392b;
+}
+
+.button-group button:nth-child(3){
+    background:#3498db;
+}
+
+.button-group button:nth-child(3):hover{
+    background:#2176bd;
+}
+
+/* 반응형 */
+
+@media(max-width:1000px){
+
+    .detail{
+        flex-direction:column;
+    }
+
+    .detail-con{
+        flex:none;
+        width:100%;
+    }
+
+    .detail-image img{
+        height:350px;
+    }
+}
+
+@media(max-width:600px){
+
+    .detail{
+        margin:30px auto;
+        padding:0 15px;
+    }
+
+    .right{
+        padding:25px;
+    }
+
+    .right h1{
+        font-size:24px;
+    }
+
+    .button-group{
+        flex-direction:column;
+    }
+
+    .button-group input,
+    .button-group button{
+        width:100%;
+    }
+}

@@ -9,20 +9,20 @@ public class WebMvcConfigClass implements WebMvcConfigurer {
     @Value("${img.path.item}")
     private String itemImgPath;
 
-    @Value("${img.path.board}")
-    private String boardImgPath;
+    @Value("${img.path.community}")
+    private String communityImgPath;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         //file: //경로에서 "file://"부분을 제거
         String itemPath=itemImgPath.replace("file://","");
-        String boardPath=boardImgPath.replace("file://","");
+        String communityPath=communityImgPath.replace("file://","");
 
         //리소스 핸들러 설정
         registry.addResourceHandler("/backend/item/**")
                 .addResourceLocations("file:"+itemPath); //실제 이미지 경로 설정
-        registry.addResourceHandler("/backend/board/**")
-                .addResourceLocations("file:"+boardPath); //실제 이미지 경로 설정
+        registry.addResourceHandler("/backend/community/**")
+                .addResourceLocations("file:"+communityPath); //실제 이미지 경로 설정
     }
 
 }

@@ -1,0 +1,264 @@
+@charset "UTF-8";
+
+@import url("../common/reset.css");
+@import url("../common/header.css");
+@import url("../common/footer.css");
+
+body{
+    background:#f4f6f9;
+    font-family:Arial,sans-serif;
+    color:#222;
+}
+
+.community{
+    width:100%;
+    min-height:calc(100vh - 160px);
+    padding:60px 20px;
+}
+
+.community .community-con{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.community .search{
+    width:100%;
+    background:#fff;
+    padding:28px 30px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+    margin-bottom:30px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.community .search h3{
+    font-size:28px;
+    color:#2c3e50;
+}
+
+.community .search form{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.community .search select,
+.community .search input[type="text"]{
+    height:42px;
+    border:1px solid #dcdfe6;
+    border-radius:10px;
+    padding:0 12px;
+    font-size:14px;
+    outline:none;
+}
+
+.community .search input[type="text"]{
+    width:240px;
+}
+
+.community .search select:focus,
+.community .search input[type="text"]:focus{
+    border-color:#3498db;
+}
+
+.community .search input[type="submit"],
+.community .write-btn{
+    height:42px;
+    padding:0 22px;
+    border:none;
+    border-radius:10px;
+    background:#2c3e50;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.community .write-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.community .search input[type="submit"]:hover,
+.community .write-btn:hover{
+    background:#1f2937;
+}
+
+.community-table{
+    width:100%;
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 5px 18px rgba(0,0,0,0.07);
+}
+
+.community-table table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.community-table thead{
+    background:#2c3e50;
+    color:#fff;
+}
+
+.community-table th,
+.community-table td{
+    padding:16px 14px;
+    font-size:14px;
+    text-align:center;
+    border-bottom:1px solid #edf0f3;
+}
+
+.community-table th{
+    font-weight:700;
+}
+
+.community-table tbody tr:hover{
+    background:#f8fafc;
+}
+
+.community-table .title{
+    text-align:left;
+    font-weight:600;
+}
+
+.community-table .title a{
+    color:#222;
+    display:block;
+    max-width:520px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.community-table .title a:hover{
+    color:#3498db;
+}
+
+.community-table .category{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:70px;
+    height:28px;
+    padding:0 10px;
+    border-radius:999px;
+    background:#eef5ff;
+    color:#3498db;
+    font-size:13px;
+    font-weight:700;
+}
+
+.community-empty{
+    width:100%;
+    padding:60px 20px;
+    background:#fff;
+    border-radius:18px;
+    text-align:center;
+    color:#777;
+    box-shadow:0 5px 18px rgba(0,0,0,0.07);
+}
+
+/* 페이징 */
+.paging{
+    width:100%;
+    margin:45px 0 10px;
+}
+
+.paging ul{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+}
+
+.paging li a,
+.paging li span{
+    min-width:38px;
+    height:38px;
+    padding:0 12px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:10px;
+    background:#fff;
+    border:1px solid #dcdfe6;
+
+    font-size:14px;
+    color:#333;
+}
+
+.paging .now{
+    background:#3498db;
+    border-color:#3498db;
+    color:#fff;
+    font-weight:700;
+}
+
+.paging .span0{
+    color:#aaa;
+    background:#f0f0f0;
+}
+
+.paging .span1:hover,
+.paging .block a:hover{
+    background:#f3f4f6;
+}
+
+/* 반응형 */
+@media(max-width:850px){
+    .community .search{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .community .search form{
+        width:100%;
+    }
+
+    .community .search input[type="text"]{
+        flex:1;
+        width:auto;
+    }
+
+    .community-table{
+        overflow-x:auto;
+    }
+
+    .community-table table{
+        min-width:850px;
+    }
+}
+
+@media(max-width:560px){
+    .community{
+        padding:40px 15px;
+    }
+
+    .community .search{
+        padding:24px 20px;
+    }
+
+    .community .search form{
+        flex-direction:column;
+    }
+
+    .community .search select,
+    .community .search input[type="text"],
+    .community .search input[type="submit"],
+    .community .write-btn{
+        width:100%;
+    }
+
+    .paging ul{
+        flex-wrap:wrap;
+    }
+}

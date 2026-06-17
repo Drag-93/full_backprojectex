@@ -52,6 +52,7 @@ public class PaymentServiceImpl implements PaymentService {
             PaymentItemEntity.builder()
                     .paymentItemTitle(el.getItemEntity().getItemTitle())
                     .paymentItemPrice(el.getItemEntity().getItemPrice())
+                    .paymentItemSize(el.getItemSize())
                     .paymentEntity(savedPayment)
                     .build()).toList();
         //5. 결제 상세 상품 대량 저장(Bulk Insert 효과)

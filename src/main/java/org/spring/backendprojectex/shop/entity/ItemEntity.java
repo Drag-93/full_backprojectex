@@ -49,4 +49,5 @@ public class ItemEntity  extends BasicTime {
     //1:N
     @OneToMany(mappedBy = "itemEntity",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private List<ItemListEntity> itemListEntities;
+
 }

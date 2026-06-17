@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.spring.backendprojectex.common.BasicTime;
+import org.spring.backendprojectex.community.entity.CommunityEntity;
 
 @Data
 @Builder
@@ -28,4 +29,8 @@ public class FileEntity extends BasicTime {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private ItemEntity itemEntity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "community_id")
+    private CommunityEntity communityEntity;
 }

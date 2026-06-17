@@ -37,6 +37,9 @@
                 <th:block th:if="${key=='chat'}">
                     <th:block th:replace="~{fragments/admin/admin_chat :: adminChatFragment}"></th:block>
                 </th:block>
+                <th:block th:if="${key=='community'}">
+                    <th:block th:replace="~{fragments/admin/admin_community :: adminCommunityFragment}"></th:block>
+                </th:block>
             </div>
         </div>
     </div>
