@@ -26,10 +26,7 @@
                     <input type="text" name="search" id="search" th:value="${param.search}">
                     <input type="submit" value="검색"/>
                 </form>
-            </div>
         <div class="write-btn">
-<!--            접속o -> 글쓰기 이동
-            접속X -> alert 로그인 페이지 이동-->
             <th:block sec:authorize="isAuthenticated()">
             <a th:href="@{/community/write}">글쓰기</a>
             </th:block>
@@ -38,6 +35,7 @@
                 </th:block>
 
         </div>
+            </div>
         <div class="community-table">
 <table>
     <thead>
