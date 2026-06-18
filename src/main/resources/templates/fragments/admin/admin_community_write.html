@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="adminCommunityWriteFragment">
+    <div class="admin_communityWrite">
+        <div class="admin_communityWrite-con">
+            <h1>게시글작성</h1>
+            <form th:action="@{/admin/communityWrite}" method="post" th:object="${communityDto}" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="category">분류</label>
+                    <select name="category" id="category" required class="select-box">
+                        <option value="" disabled selected>선택하세요</option>
+                        <option value="공지사항">공지사항</option>
+                        <option value="상품후기">상품후기</option>
+                        <option value="상품 Q&A">상품 Q&A</option>
+                        <option value="교환/반품">교환/반품</option>
+                        <option value="VIP전용 게시판">VIP전용 게시판</option>
+                        <option value="배송조회">배송조회</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="title">제목</label>
+                    <input type="text" name="title" id="title" placeholder="제목을 입력해주세요" required class="input-text">
+                </div>
+                <div class="form-group">
+                    <label for="memberId">작성자Id</label>
+                    <input type="text" name="memberId" id="memberId" th:value="${#authentication !=null? #authentication.principal.memberEntity.id:''}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="nickName">닉네임</label>
+                    <input type="text" name="nickName" id="nickName" placeholder="닉네임을 입력해주세요" required class="input-text">
+                </div>
+                <div class="form-group">
+                    <label for="content">내용</label>
+                    <textarea name="content" id="content" placeholder="내용을 입력해주세요" required class="textarea-content"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="s1"><span>파일</span><input type="file" name="communityFile"></div>
+                </div>
+                <div class="btn-group">
+                    <a th:href="@{/admin/community}" class="btn-cancel">취소</a>
+                    <button type="submit" class="btn-submit">등록</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</th:block>
+</html>

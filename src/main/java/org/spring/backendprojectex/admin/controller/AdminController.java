@@ -3,6 +3,8 @@ package org.spring.backendprojectex.admin.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.spring.backendprojectex.community.dto.CommunityDto;
+import org.spring.backendprojectex.community.service.CommunityService;
 import org.spring.backendprojectex.member.dto.MemberDto;
 import org.spring.backendprojectex.member.service.MemberService;
 import org.spring.backendprojectex.shop.dto.ItemDto;
@@ -26,6 +28,7 @@ import java.io.IOException;
 public class AdminController {
     private final MemberService memberService;
     private final ItemService itemService;
+    private final CommunityService communityService;
 
     @Value("${kakao.map.appkey}")
     private String kakaoMapKey;
@@ -112,8 +115,43 @@ public class AdminController {
         model.addAttribute("key","chat");
         return "admin/admin";
     }
+    @GetMapping("/community")
+    public String community(@PageableDefault(page = 0, size = 8, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+                            @RequestParam(name = "subject", required = false) String subject,
+                            @RequestParam(name = "search", required = false) String search,
+                            Model model) {
+        Page<CommunityDto> communityList = communityService.communityListFn(pageable, subject, search);
+        System.out.println(communityList);
+        setPaging(model, communityList, 3); // 페이지 계산 공통 메서드 사용
+        model.addAttribute("content", communityList);
+        model.addAttribute("key", "community");
+        return "admin/admin";
+    }
 
-
+    @GetMapping("/communityDetail/{id}")
+    public String communityDetail(@PathVariable("id") Long id,
+                                  Model model) {
+        CommunityDto communityDto = communityService.communityDetailFn(id);
+        model.addAttribute("community", communityDto);
+        model.addAttribute("key","communityDetail");
+        return "admin/admin";
+    }
+    @GetMapping("/communityWrite")
+    public String communityWrite(Model model){
+        model.addAttribute("key","communityWrite");
+        return "admin/admin";
+    }
+    @PostMapping("/communityWrite")
+    public String communityWriteOk(@Valid CommunityDto communityDto,
+                          BindingResult bindingResult,
+                          Model model) throws IOException{
+        if (bindingResult.hasErrors()) {
+            return "admin/communityWrite";
+        }
+        communityService.communityInsert(communityDto);
+        //회원가입 -> list이동
+        return "redirect:/admin/community";
+    }
     private void setPaging(Model model, Page<?> pageData, int blockSize) {
         System.out.println(pageData);
         int currentPage = pageData.getNumber();

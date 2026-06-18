@@ -40,6 +40,12 @@
                 <th:block th:if="${key=='community'}">
                     <th:block th:replace="~{fragments/admin/admin_community :: adminCommunityFragment}"></th:block>
                 </th:block>
+                <th:block th:if="${key=='communityDetail'}">
+                    <th:block th:replace="~{fragments/admin/admin_community_detail :: adminCommunityDetailFragment}"></th:block>
+                </th:block>
+                <th:block th:if="${key=='communityWrite'}">
+                    <th:block th:replace="~{fragments/admin/admin_community_write :: adminCommunityWriteFragment}"></th:block>
+                </th:block>
             </div>
         </div>
     </div>

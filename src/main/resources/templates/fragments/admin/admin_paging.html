@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<tfoot th:fragment="adminPagingFragment">
+<tr>
+    <td colspan="9">
+        <div class="paging">
+            <ul>
+                <li>
+                    <span th:if="${content.pageable.pageNumber+1 eq 1}" class="span0">START</span>
+                    <span th:unless="${content.pageable.pageNumber+1 eq 1}">
+                                        <a th:href="@{/admin/{key}(key=${key},page=0, subject=${param.subject}, search=${param.search})}"
+                                           class="span1">처음</a>
+                                    </span>
+                </li>
+                <li>
+                    <span th:if="${1 == content.pageable.pageNumber+1}" class="span0">PRE</span>
+                    <span th:unless="${1 == content.pageable.pageNumber+1}">
+                                        <a th:href="@{/admin/{key}(key=${key},page=${content.pageable.pageNumber - 1}, subject=${param.subject}, search=${param.search})}"
+                                           class="span1">이전</a>
+                                    </span>
+                </li>
+                <!-- 페이지 번호 -->
+                <li th:each="i: ${#numbers.sequence(startPage, endPage)}" class="block">
+                                    <span th:if="${i == content.pageable.pageNumber+1}" th:text="${i}"
+                                          class="now"></span>
+                    <a th:unless="${i == content.pageable.pageNumber+1}"
+                       th:href="@{/admin/{key}(key=${key},page=${i - 1}, subject=${param.subject}, search=${param.search})}"
+                       th:text="${i}"></a>
+                </li>
+
+                <li>
+                                    <span th:if="${content.totalPages == content.pageable.pageNumber + 1}"
+                                          class="span0">NEXT</span>
+                    <span th:unless="${content.totalPages == content.pageable.pageNumber + 1}">
+                                        <a th:href="@{/admin/{key}(key=${key},page=${content.pageable.pageNumber + 1}, subject=${param.subject}, search=${param.search})}"
+                                           class="span1">다음</a>
+                                    </span>
+                </li>
+                <li>
+                    <span th:if="${content.totalPages == content.pageable.pageNumber + 1}" class="span0">END</span>
+                    <span th:unless="${content.totalPages == content.pageable.pageNumber + 1}">
+                                        <a th:href="@{/admin/{key}(key=${key},page=${content.totalPages - 1}, subject=${param.subject}, search=${param.search})}" class="span1">마지막</a>
+                                    </span>
+                </li>
+            </ul>
+        </div>
+    </td>
+</tr>
+</tfoot>
+</html>

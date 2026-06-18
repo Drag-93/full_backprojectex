@@ -608,3 +608,395 @@
         height: 260px;
     }
 }
+
+/* ================================
+   COMMUNITY LIST
+================================ */
+
+.admin_community-con {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-sizing: border-box;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* 글쓰기 버튼 */
+
+.write-btn a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.write-btn a:hover {
+    background-color: #1d4ed8;
+}
+
+/* 게시판 테이블 */
+
+.community-table table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.community-table table th,
+.community-table table td {
+    padding: 14px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.community-table table thead th {
+    background-color: #f3f4f6;
+    color: #374151;
+    font-weight: 700;
+}
+
+.community-table table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.community-table table td {
+    color: #333333;
+    word-break: break-word;
+}
+
+.community-table table td:nth-child(3),
+.community-table table td:nth-child(4) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.community-table table td a {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 7px;
+    background-color: #111827;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.community-table table td a:hover {
+    background-color: #374151;
+}
+
+/* ================================
+   COMMUNITY DETAIL
+================================ */
+
+.admin_communityDetail-con {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-sizing: border-box;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+
+    display: flex;
+    gap: 36px;
+}
+
+/* 왼쪽 */
+
+.admin_communityDetail-con > .left {
+    width: 40%;
+}
+
+.admin_communityDetail .detail-image {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #f3f4f6;
+}
+
+.admin_communityDetail .detail-image img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+}
+
+/* 오른쪽 */
+
+.admin_communityDetail-con > .right {
+    flex: 1;
+}
+
+.admin_communityDetail-con > .right h1 {
+    margin-bottom: 24px;
+    font-size: 28px;
+    color: #111827;
+}
+
+.admin_communityDetail-con > .right ul li {
+    margin-bottom: 16px;
+}
+
+.admin_communityDetail-con > .right label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #374151;
+}
+
+.admin_communityDetail-con > .right input[type="text"],
+.admin_communityDetail-con > .right textarea {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #f9fafb;
+}
+
+.admin_communityDetail-con > .right input[type="text"] {
+    height: 42px;
+    padding: 0 13px;
+}
+
+.admin_communityDetail-con > .right textarea {
+    min-height: 220px;
+    padding: 13px;
+    resize: none;
+    white-space: pre-wrap;
+}
+
+.admin_communityDetail .date {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* 버튼 */
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-group input,
+.button-group button {
+    min-width: 110px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.button-group input[type="submit"] {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.button-group button:nth-child(2) {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.button-group button:nth-child(3) {
+    background-color: #111827;
+    color: #ffffff;
+}
+
+.button-group input:hover {
+    background-color: #1d4ed8;
+}
+
+.button-group button:nth-child(2):hover {
+    background-color: #dc2626;
+}
+
+.button-group button:nth-child(3):hover {
+    background-color: #374151;
+}
+
+/* ================================
+   COMMUNITY WRITE
+================================ */
+
+.admin_communityWrite {
+    width: 100%;
+}
+
+.admin_communityWrite-con {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-sizing: border-box;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.admin_communityWrite-con h1 {
+    margin-bottom: 28px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.admin_communityWrite-con form {
+    width: 100%;
+}
+
+.admin_communityWrite .form-group {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.admin_communityWrite label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #374151;
+}
+
+.admin_communityWrite input[type="text"],
+.admin_communityWrite select,
+.admin_communityWrite textarea {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 15px;
+}
+
+.admin_communityWrite input[type="text"],
+.admin_communityWrite select {
+    height: 44px;
+    padding: 0 14px;
+}
+
+.admin_communityWrite textarea {
+    min-height: 240px;
+    padding: 14px;
+    resize: none;
+    line-height: 1.6;
+}
+
+.admin_communityWrite input[readonly] {
+    background-color: #f3f4f6;
+    color: #6b7280;
+}
+
+.admin_communityWrite input:focus,
+.admin_communityWrite select:focus,
+.admin_communityWrite textarea:focus {
+    border-color: #2563eb;
+}
+
+.admin_communityWrite .s1 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin_communityWrite .s1 span {
+    width: 70px;
+    flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: #374151;
+}
+
+.admin_communityWrite input[type="file"] {
+    flex: 1;
+    height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+/* 버튼 */
+
+.admin_communityWrite .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.admin_communityWrite .btn-cancel,
+.admin_communityWrite .btn-submit {
+    width: 130px;
+    height: 44px;
+    border: none;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin_communityWrite .btn-cancel {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.admin_communityWrite .btn-cancel:hover {
+    background-color: #d1d5db;
+}
+
+.admin_communityWrite .btn-submit {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.admin_communityWrite .btn-submit:hover {
+    background-color: #1d4ed8;
+}
+
+/* 반응형 */
+
+@media screen and (max-width: 768px) {
+    .admin_communityWrite-con {
+        padding: 22px 16px;
+    }
+
+    .admin_communityWrite .btn-group {
+        flex-direction: column;
+    }
+
+    .admin_communityWrite .btn-cancel,
+    .admin_communityWrite .btn-submit {
+        width: 100%;
+    }
+
+    .admin_communityWrite .s1 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin_communityWrite .s1 span {
+        width: auto;
+    }
+
+    .admin_communityWrite input[type="file"] {
+        width: 100%;
+    }
+}
+.admin_communityDetail-con > .left {
+    background-color: transparent !important;
+    min-height: auto !important;
+}

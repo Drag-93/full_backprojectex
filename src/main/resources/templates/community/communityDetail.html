@@ -2,45 +2,31 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <head>
     <meta charset="UTF-8">
     <title>게시글 상세내용</title>
     <link rel="stylesheet" th:href="@{/css/community/communityDetail.css}">
 </head>
-
 <body>
-
 <div th:replace="~{fragments/common/header :: headerFragment}"></div>
-
 <div class="detail">
-
     <!-- 왼쪽 이미지 -->
     <div class="detail-con">
         <div class="detail-image">
-
             <th:block th:if="${community.attachFile == 1}">
                 <img th:src="@{|/backend/community/${community.newFileName}|}"
                      alt="게시글 이미지">
             </th:block>
-
             <th:block th:unless="${community.attachFile == 1}">
                 <img src="https://placehold.co/400x450/cccccc/ffffff?text=COMMUNITY"
                      alt="기본 이미지">
             </th:block>
-
         </div>
     </div>
-
-    <!-- 오른쪽 정보 -->
     <div class="right">
-
         <h1 th:text="${community.title}"></h1>
-
         <form th:action="@{/community/write}" method="post">
-
             <ul>
-
                 <li>
                     <label for="id">게시글 번호</label>
                     <input type="text"
@@ -49,7 +35,6 @@
                            th:value="${community.id}"
                            readonly>
                 </li>
-
                 <li>
                     <label for="nickName">작성자</label>
                     <input type="text"
@@ -58,7 +43,6 @@
                            th:value="${community.nickName}"
                            readonly>
                 </li>
-
                 <li>
                     <label for="memberId">회원번호</label>
                     <input type="text"
@@ -67,7 +51,6 @@
                            th:value="${community.memberId}"
                            readonly>
                 </li>
-
                 <li>
                     <label for="content">내용</label>
                     <textarea name="content"
@@ -75,48 +58,33 @@
                               readonly
                               th:text="${community.content}"></textarea>
                 </li>
-
                 <li class="date">
                     작성일 :
                     <span th:text="${#temporals.format(community.createTime,'yyyy-MM-dd HH:mm:ss')}"></span>
                 </li>
-
                 <li class="date">
                     수정일 :
                     <span th:text="${#temporals.format(community.updateTime,'yyyy-MM-dd HH:mm:ss')}"></span>
                 </li>
-
                 <li>
                     <div class="button-group">
-
                         <th:block sec:authorize="isAuthenticated()">
-
                             <input type="submit" value="게시글 수정">
-
                             <button type="button"
                                     th:onclick="|location.href='@{/community/delete/{id}(id=${community.id})}'|">
                                 삭제
                             </button>
-
                             <button type="button"
                                     onclick="location.href='/community/list'">
                                 목록
                             </button>
-
                         </th:block>
-
                     </div>
                 </li>
-
             </ul>
-
         </form>
-
     </div>
-
 </div>
-
 <div th:replace="~{fragments/common/footer :: footerFragment}"></div>
-
 </body>
 </html>

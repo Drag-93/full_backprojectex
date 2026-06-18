@@ -1,9 +1,66 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="adminCommunityFragment">
-<div class="community">
-<div class="community-con">
+<div class="admin_community">
+<div class="admin_community-con">
+    <div class="search">
+        <h3>게시글목록 </h3>
 
+        <form th:action="@{/admin/community}">
+            <select name="subject" id="subject">
+                <option value="" th:selected="${#strings.isEmpty( param.subject )}">::선택::</option>
+                <option value="title" th:selected="${#strings.equals( param.subject, 'title' )}">제목
+                </option>
+                <option value="content" th:selected="${#strings.equals( param.subject, 'content' )}">내용
+                </option>
+                <option value="nickName" th:selected="${#strings.equals( param.subject, 'nickName' )}">작성자</option>
+                <option value="category" th:selected="${#strings.equals( param.subject, 'category' )}">카테고리</option>
+            </select>
+            <input type="text" name="search" id="search" th:value="${param.search}">
+            <input type="submit" value="검색"/>
+        </form>
+        <div class="write-btn">
+                <a th:href="@{/admin/communityWrite}">글쓰기</a>
+        </div>
+    </div>
+    <div class="community-table">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>카테고리</th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>파일유무</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+                <th>보기</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="community:${content}">
+                <tr>
+                    <td th:text="${community.id}"></td>
+                    <td th:text="${community.category}"></td>
+                    <td th:text="${community.title}"></td>
+                    <td th:text="${community.content}"></td>
+                    <td th:if="${community.attachFile == 1}">O</td>
+                    <td th:unless="${community.attachFile == 1}">X</td>
+                    <td th:text="${community.nickName}"></td>
+                    <td th:text="${#temporals.format(community.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${community.count}"></td>
+                    <td>
+                        <a th:href="@{/admin/communityDetail/{id}(id=${community.id})}">
+                            보기
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+                <th:block th:replace="~{fragments/admin/admin_paging :: adminPagingFragment}"></th:block>
+        </table>
 </div>
 </div>
 </th:block>
